@@ -17,10 +17,11 @@ import {
   IconBrandWechat,
   IconPlanet
 } from '@tabler/icons-react'
-import ContactsBook2FillIcon from 'remixicon-react/ContactsBook2FillIcon'
+import RadarFillIcon from 'remixicon-react/RadarFillIcon'
 import MailSendFillIcon from 'remixicon-react/MailSendFillIcon'
 // Conceptual Navigation Icons (Solid, Angular)
 import AppsFillIcon from 'remixicon-react/AppsFillIcon'
+import FolderFillIcon from 'remixicon-react/FolderFillIcon'
 import BookMarkFillIcon from 'remixicon-react/BookMarkFillIcon'
 import BarcodeFillIcon from 'remixicon-react/BarcodeFillIcon'
 import StackFillIcon from 'remixicon-react/StackFillIcon'
@@ -31,7 +32,7 @@ import ProfileFillIcon from 'remixicon-react/ProfileFillIcon'
 // Icon mapping (Conceptual Remix Icons)
 const IconComponents = {
   'Home': AppsFillIcon,
-  'Category': BookMarkFillIcon,
+  'Category': FolderFillIcon,
   'Tag': BarcodeFillIcon,
   'Archive': StackFillIcon,
   'Search': Compass3FillIcon,
@@ -170,7 +171,7 @@ export const SideNav = (props) => {
             <img 
               src={avatarUrl}
               alt="Avatar"
-              className="w-full h-full rounded-full object-cover border-2 border-[var(--endspace-accent-yellow)] shadow-lg hover:border-[var(--endspace-text-primary)] transition-colors"
+              className="w-full h-full rounded-full object-cover shadow-lg transition-colors"
             />
           </div>
         </SmartLink>
@@ -191,7 +192,7 @@ export const SideNav = (props) => {
       <div ref={navRef} className="flex-1 py-4 flex flex-col gap-2 overflow-y-auto overflow-x-hidden relative">
         {/* Animated Active Indicator Bar - Higher z-index */}
         <div 
-          className="absolute left-0 w-[0.25rem] h-[3rem] bg-[var(--endspace-accent-yellow)] transition-all duration-300 ease-out z-10"
+          className="absolute left-0 w-1.5 h-[3rem] bg-[var(--endspace-text-primary)] transition-all duration-300 ease-out z-10"
           style={{ top: indicatorStyle.top, opacity: indicatorStyle.opacity }}
         />
         
@@ -201,7 +202,7 @@ export const SideNav = (props) => {
             <SmartLink key={item.name} href={item.path}>
               <div 
                 ref={el => itemRefs.current[item.name] = el}
-                className={`nier-nav-item relative h-[3rem] flex items-center cursor-pointer group ${isActive ? 'active' : ''}`}
+                className={`nier-nav-item relative h-[3rem] flex items-center cursor-pointer group transition-colors duration-300 hover:bg-[#d4d4d8] ${isActive ? 'active bg-[#d4d4d8]' : ''}`}
               >
                 {/* Icon Container */}
                 <div className="w-[5rem] flex-shrink-0 flex items-center justify-center z-10">
@@ -226,8 +227,8 @@ export const SideNav = (props) => {
         
         {/* Collapsed State: Contact Button with light gray background */}
         <div className={`flex justify-center transition-all duration-300 ${isHovered ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'}`}>
-          <div className="w-[2.5rem] h-[2.5rem] flex items-center justify-center bg-gray-200 text-gray-500 rounded cursor-pointer hover:text-white hover:bg-blue-500 transition-colors">
-             <ContactsBook2FillIcon size={18} />
+          <div className="w-[2.5rem] h-[2.5rem] flex items-center justify-center bg-gray-200 text-gray-500 rounded cursor-pointer hover:text-white hover:bg-gray-600 transition-colors">
+             <RadarFillIcon size={18} />
            </div>
          </div>
 
@@ -240,7 +241,7 @@ export const SideNav = (props) => {
                   <a 
                   href={`mailto:${email}`}
                   title={email}
-                  className="w-[1.75rem] h-[1.75rem] flex items-center justify-center bg-gray-200 text-gray-500 rounded hover:text-white hover:bg-blue-500 transition-colors flex-shrink-0"
+                  className="w-[1.75rem] h-[1.75rem] flex items-center justify-center bg-gray-200 text-gray-500 rounded hover:text-white hover:bg-gray-600 transition-colors flex-shrink-0"
                 >
                   <MailSendFillIcon size={14} />
                </a>
@@ -257,7 +258,7 @@ export const SideNav = (props) => {
                    target="_blank" 
                    rel="noreferrer"
                    title={label}
-                   className="w-[1.75rem] h-[1.75rem] flex items-center justify-center bg-gray-200 text-gray-500 rounded hover:text-white hover:bg-blue-500 transition-colors flex-shrink-0"
+                   className="w-[1.75rem] h-[1.75rem] flex items-center justify-center bg-gray-200 text-gray-500 rounded hover:text-white hover:bg-gray-600 transition-colors flex-shrink-0"
                  >
                    {renderSocialIcon(key, svg, label)}
                  </a>

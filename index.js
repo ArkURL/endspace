@@ -24,9 +24,8 @@ import { SideNav } from './components/SideNav'
 import TitleBar from './components/TitleBar'
 import LoadingCover from './components/LoadingCover'
 import MobileNav from './components/MobileNav'
-import MobileToc from './components/MobileToc'
 import ArticleAdjacent from './components/ArticleAdjacent'
-import FloatingToc from './components/FloatingToc'
+import FloatingControls from './components/FloatingControls'
 import useViewportScale from './components/useViewportScale'
 import CONFIG from './config'
 import { Style } from './style'
@@ -41,6 +40,7 @@ import { IconChevronUp, IconFolder, IconTag, IconLoader2 } from '@tabler/icons-r
 const LayoutBase = (props) => {
   const { children, post } = props
   const { onLoading, fullWidth, locale } = useGlobal()
+  const toc = post?.toc
 
   // Article detail page vertical layout
   const LAYOUT_VERTICAL =
@@ -80,19 +80,14 @@ const LayoutBase = (props) => {
         <div id="container-inner" className="w-full relative z-10 flex-grow">
           <div
             id="container-wrapper"
-            className={`relative mx-auto justify-center md:flex py-8 px-4 md:px-8 lg:px-12 max-w-screen-xl xl:max-w-screen-2xl
-            ${LAYOUT_SIDEBAR_REVERSE ? 'flex-row-reverse' : ''} 
-            ${LAYOUT_VERTICAL ? 'items-center flex-col' : 'items-start'} 
-            `}
+            className="relative mx-auto justify-center md:flex py-8 px-4 md:px-8 lg:px-12 max-w-screen-xl xl:max-w-screen-2xl items-start"
           >
-            {/* Main content */}
+            {/* Main content - Centered */}
             <div
               className={`${
                 fullWidth
                   ? 'w-full'
-                  : LAYOUT_VERTICAL
-                  ? 'max-w-5xl w-full mx-auto'
-                  : 'max-w-4xl lg:max-w-5xl w-full mx-auto md:mx-0 md:pr-8 lg:pr-12 flex-1'
+                  : 'max-w-4xl w-full mx-auto'
               }`}
             >
               <Transition
@@ -110,37 +105,19 @@ const LayoutBase = (props) => {
                 {children}
               </Transition>
             </div>
-
-            {/* Right sidebar */}
+            
+            {/* Spacer for structure consistency */}
             {!fullWidth && (
-              <div
-                className={`${
-                  LAYOUT_VERTICAL
-                    ? 'flex space-x-0 md:space-x-4 md:flex-row flex-col w-full max-w-5xl justify-center mt-8 mx-auto'
-                    : 'lg:w-80 xl:w-96 w-full mt-8 md:mt-0 md:sticky md:top-24 flex-shrink-0'
-                }`}
-              >
-                <SideBar {...props} />
-              </div>
+               <div />
             )}
           </div>
         </div>
 
         {/* Footer */}
         {!fullWidth && <Footer />}
-      </div>
 
-      {/* Scroll to top button */}
-      <div
-        className="fixed right-4 bottom-20 md:bottom-8 z-40 cursor-pointer 
-                   w-10 h-10 flex items-center justify-center 
-                   bg-[var(--endspace-bg-secondary)] hover:bg-[var(--endspace-bg-tertiary)]
-                   border border-[var(--endspace-border-base)] hover:border-[var(--endspace-accent-yellow)]
-                   text-[var(--endspace-text-muted)] hover:text-[var(--endspace-accent-yellow)]
-                   transition-all duration-300"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      >
-        <IconChevronUp size={18} stroke={1.5} />
+        {/* Floating Controls (Unified) */}
+        <FloatingControls toc={toc} {...props} />
       </div>
     </div>
   )
@@ -225,17 +202,9 @@ const LayoutSlug = (props) => {
             {/* Previous / Next Article Navigation */}
             <ArticleAdjacent prev={props.prev} next={props.next} />
 
-            <Comment frontMatter={post} />
-
-            {/* Mobile Table of Contents */}
-            {post.toc && post.toc.length > 0 && (
-              <MobileToc toc={post.toc} />
-            )}
-
-            {/* Desktop Floating TOC */}
-            {post.toc && post.toc.length > 0 && (
-              <FloatingToc toc={post.toc} />
-            )}
+            <div id="comments">
+              <Comment frontMatter={post} />
+            </div>
           </div>
         )
       )}
@@ -393,15 +362,15 @@ const LayoutCategoryIndex = (props) => {
               passHref
               legacyBehavior
             >
-              <div className="tech-corner p-4 bg-[var(--endspace-bg-secondary)] hover:bg-[var(--endspace-bg-tertiary)] border border-[var(--endspace-border-base)] hover:border-[var(--endspace-accent-yellow)] transition-all cursor-pointer group">
+              <div className="tech-corner p-4 bg-[var(--endspace-bg-secondary)] hover:bg-[#FBFB46] border border-[var(--endspace-border-base)] hover:border-black transition-all cursor-pointer group">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <IconFolder size={16} stroke={1.5} className="text-[var(--endspace-accent-cyan)] group-hover:text-[var(--endspace-accent-yellow)] transition-colors" />
-                    <span className="text-[var(--endspace-text-primary)] group-hover:text-[var(--endspace-accent-yellow)] transition-colors">
+                    <IconFolder size={16} stroke={1.5} className="text-[var(--endspace-accent-cyan)] group-hover:text-black transition-colors" />
+                    <span className="text-[var(--endspace-text-primary)] group-hover:text-black transition-colors font-bold">
                       {category.name}
                     </span>
                   </div>
-                  <span className="tech-text text-xs text-[var(--endspace-text-muted)]">
+                  <span className="tech-text text-xs text-[var(--endspace-text-muted)] group-hover:text-black font-mono">
                     [{category.count}]
                   </span>
                 </div>

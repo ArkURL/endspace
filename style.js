@@ -21,15 +21,15 @@ export const Style = () => {
         --endspace-text-secondary: #52525b;
         --endspace-text-muted: #a1a1aa;
         
-        /* Accents (Subtle Industrialism) */
-        --endspace-accent-yellow: #62F0F5;
-        --endspace-accent-yellow-dim: rgba(98, 240, 245, 0.15);
-        --endspace-accent-cyan: #06b6d4;
-        --endspace-accent-cyan-dim: rgba(6, 182, 212, 0.1);
+        /* Accents (Subtle Industrialism) -> Converted to Yellow Suite */
+        --endspace-accent-yellow: #FBFB45;
+        --endspace-accent-yellow-dim: rgba(251, 251, 69, 0.15);
+        --endspace-accent-cyan: #FBFB45; /* OVERRIDE: Cyan usage -> Yellow 500 */
+        --endspace-accent-cyan-dim: rgba(251, 251, 69, 0.1); /* OVERRIDE: Cyan dim -> Yellow dim */
         
         /* Borders & Lines */
         --endspace-border-base: #e4e4e7;
-        --endspace-border-active: #3b82f6;
+        --endspace-border-active: #FBFB45; /* Active border -> Yellow */
         --endspace-grid-color: rgba(0,0,0,0.03);
         
         /* Shadows - Enhanced 3D Depth */
@@ -55,13 +55,13 @@ export const Style = () => {
         --endspace-text-secondary: #a1a1aa;
         --endspace-text-muted: #71717a;
         
-        --endspace-accent-yellow: #62F0F5;
-        --endspace-accent-yellow-dim: rgba(98, 240, 245, 0.15);
-        --endspace-accent-cyan: #22d3ee;
-        --endspace-accent-cyan-dim: rgba(34, 211, 238, 0.1);
+        --endspace-accent-yellow: #FBFB45;
+        --endspace-accent-yellow-dim: rgba(251, 251, 69, 0.15);
+        --endspace-accent-cyan: #FBFB45; /* Dark Mode: Yellow 600 */
+        --endspace-accent-cyan-dim: rgba(251, 251, 69, 0.1);
         
         --endspace-border-base: #27272a;
-        --endspace-border-active: #3b82f6;
+        --endspace-border-active: #FBFB45;
         --endspace-grid-color: rgba(255,255,255,0.02);
         
         --endspace-shadow-base: 
@@ -591,7 +591,7 @@ export const Style = () => {
       
       .ef-button:hover::before {
         height: 70%;
-        background-color: #FFFA00;
+        background-color: #FBFB45;
       }
 
       /* ============================================
@@ -767,14 +767,14 @@ export const Style = () => {
         left: 0;
         width: 0%;
         height: 100%;
-        background: var(--endspace-text-primary); /* Inverted Background Color */
+        background: #d4d4d8; /* Zinc-300 - Clearly visible grey */
         transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         z-index: -1;
       }
       
       /* Active / Hover State */
       .nier-nav-item:hover, .nier-nav-item.active {
-        color: var(--endspace-bg-base) !important; /* Text becomes bg color (Inverse) */
+        color: var(--endspace-text-primary) !important; /* Text becomes bg color (Inverse) */
       }
       
       .nier-nav-item:hover::before, .nier-nav-item.active::before {
@@ -792,15 +792,20 @@ export const Style = () => {
         /* Optional: Active could be Accent color instead of Black */
         /* background-color: var(--endspace-accent-yellow) works via ::before? */
       }
+      /* Removed specific active override to keep consistent grey background */
       .nier-nav-item.active::before {
-        background: var(--endspace-text-primary); /* Keeping it monochrome NieR style for now, or use accent? User asked for 'inverse', usually B&W */
+         /* Ensure it uses the same grey as hover, or slightly darker if preferred.
+            Let's keep it consistent: */
+         background: #d4d4d8; /* Zinc-300 - Clearly visible grey */
       }
+      
+      /* Also update the base hover/active shared rule to use this darker grey */
       
       .dark .nier-nav-item::before {
         background: #f4f4f5; /* Light bg in dark mode */
       }
       .dark .nier-nav-item:hover, .dark .nier-nav-item.active {
-        color: #18181b !important; /* Dark text in dark mode */
+        color: #fafafa !important; /* Dark text in dark mode */
       }
     `}</style>
   )

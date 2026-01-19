@@ -84,18 +84,41 @@ export const EndspacePlayer = ({ isExpanded }) => {
 
   // Auto-play on initial load based on config
   useEffect(() => {
-    if (!hasInitializedRef.current && audioRef.current && currentAudio.url && autoPlay) {
+    // Only run this once on mount/init for autoplay
+    if (hasInitializedRef.current) return
+
+    if (autoPlay && audioRef.current && currentAudio.url) {
       hasInitializedRef.current = true
-      // Small delay to ensure audio is ready
-      const timer = setTimeout(() => {
-        audioRef.current?.play().catch(e => console.log('Initial autoplay prevented:', e))
-        setIsPlaying(true)
-      }, 500)
+      
+      // Simple, direct attempt to play
+      const attemptPlay = async () => {
+        try {
+          await audioRef.current?.play()
+          setIsPlaying(true)
+        } catch (error) {
+          console.log('Autoplay prevented by browser:', error)
+          // We DO NOT attach global listeners here to prevent zombie audio.
+          // If browser blocks, user must manually click play.
+        }
+      }
+      
+      // Small delay to ensure DOM is ready
+      const timer = setTimeout(attemptPlay, 800)
       return () => clearTimeout(timer)
-    } else if (!hasInitializedRef.current && audioRef.current && currentAudio.url) {
-      hasInitializedRef.current = true
+    } else {
+       hasInitializedRef.current = true
     }
   }, [currentAudio.url, autoPlay])
+
+  // Strict cleanup when track changes
+  useEffect(() => {
+    return () => {
+       // FORCE PAUSE on unmount/change to kill zombie audio
+       if (audioRef.current) {
+          audioRef.current.pause()
+       }
+    }
+  }, [currentAudio.url])
 
   // Progress update
   useEffect(() => {
@@ -201,7 +224,7 @@ export const EndspacePlayer = ({ isExpanded }) => {
           {isPlaying ? (
             // Playing: Show rotating album cover
             <>
-              <div className="w-full h-full rounded-full overflow-hidden border-2 border-[var(--endspace-accent-yellow)] endspace-player-glow endspace-player-rotating">
+              <div className="w-full h-full rounded-full overflow-hidden endspace-player-glow endspace-player-rotating">
                 <img 
                   src={currentAudio.cover || '/default-cover.jpg'} 
                   alt="Cover"
@@ -215,7 +238,7 @@ export const EndspacePlayer = ({ isExpanded }) => {
             </>
           ) : (
             // Not playing: Show music icon
-            <div className="w-full h-full rounded-lg flex items-center justify-center bg-[var(--endspace-bg-secondary)] text-[var(--endspace-text-muted)] hover:text-[var(--endspace-accent-yellow)] hover:bg-[var(--endspace-accent-yellow-dim)] transition-all">
+            <div className="w-full h-full rounded-lg flex items-center justify-center bg-[var(--endspace-bg-secondary)] text-[var(--endspace-text-muted)] hover:text-gray-600 hover:bg-gray-200 transition-all">
               <IconMusic size={18} stroke={1.5} />
             </div>
           )}
@@ -274,12 +297,12 @@ export const EndspacePlayer = ({ isExpanded }) => {
           </div>
         </div>
 
-        {/* Right side: Playlist button + Prev/Next buttons */}
+          {/* Right side: Playlist button + Prev/Next buttons */}
         <div className="flex flex-col items-center gap-1">
           {/* Playlist Toggle Button */}
           <button 
             onClick={(e) => { e.stopPropagation(); setShowPlaylist(!showPlaylist) }}
-            className={`w-6 h-6 flex items-center justify-center rounded transition-colors ${showPlaylist ? 'bg-[var(--endspace-accent-yellow)] text-white' : 'text-[var(--endspace-text-muted)] hover:text-[var(--endspace-accent-yellow)]'}`}
+            className={`w-6 h-6 flex items-center justify-center rounded transition-colors ${showPlaylist ? 'bg-black text-white' : 'text-[var(--endspace-text-muted)] hover:text-black'}`}
             title="Playlist"
           >
             <IconList size={12} stroke={1.5} />
@@ -289,14 +312,14 @@ export const EndspacePlayer = ({ isExpanded }) => {
           <div className="flex items-center gap-0.5">
             <button 
               onClick={playPrev}
-              className="w-5 h-5 flex items-center justify-center text-[var(--endspace-text-muted)] hover:text-[var(--endspace-accent-yellow)] transition-colors"
+              className="w-5 h-5 flex items-center justify-center text-[var(--endspace-text-muted)] hover:text-black transition-colors"
               title="Previous"
             >
               <IconPlayerTrackPrev size={11} stroke={1.5} />
             </button>
             <button 
               onClick={playNext}
-              className="w-5 h-5 flex items-center justify-center text-[var(--endspace-text-muted)] hover:text-[var(--endspace-accent-yellow)] transition-colors"
+              className="w-5 h-5 flex items-center justify-center text-[var(--endspace-text-muted)] hover:text-black transition-colors"
               title="Next"
             >
               <IconPlayerTrackNext size={11} stroke={1.5} />
@@ -314,13 +337,13 @@ export const EndspacePlayer = ({ isExpanded }) => {
               onClick={() => selectTrack(index)}
               className={`px-3 py-1.5 cursor-pointer transition-colors ${
                 index === currentTrack 
-                  ? 'bg-[var(--endspace-accent-yellow-dim)]' 
+                  ? 'bg-black text-white' 
                   : 'hover:bg-[var(--endspace-bg-tertiary)]'
               }`}
             >
               {/* Song name line */}
               <div className={`text-xs truncate flex items-center gap-1.5 ${
-                index === currentTrack ? 'text-[var(--endspace-accent-yellow)] font-medium' : 'text-[var(--endspace-text-secondary)]'
+                index === currentTrack ? 'text-white font-medium' : 'text-[var(--endspace-text-secondary)]'
               }`}>
                 {index === currentTrack && isPlaying && (
                   <IconVolume size={11} stroke={1.5} className="flex-shrink-0" />

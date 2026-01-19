@@ -81,17 +81,17 @@ const FloatingToc = ({ toc }) => {
     <div 
       className="fixed z-50 hidden lg:block"
       style={{
-        right: '2rem',
-        top: '50%',
-        transform: 'translateY(-50%)'
+        right: '1rem',
+        top: 'auto',
+        bottom: '100px' // Stacked: Scroll (32px) -> TOC (100px)
       }}
     >
       {/* Floating Container */}
       <div 
         className={`transition-all duration-300 ease-out ${
           isExpanded 
-            ? 'w-64 bg-[var(--endspace-bg-primary)]/95 backdrop-blur-sm border border-[var(--endspace-border-base)] shadow-lg' 
-            : 'w-11'
+            ? 'w-64 bg-[#f7f9fe] border border-[var(--endspace-border-base)] shadow-lg rounded-xl' 
+            : 'w-10'
         }`}
         style={{
           maxHeight: '70vh'
@@ -100,38 +100,35 @@ const FloatingToc = ({ toc }) => {
         {/* Toggle Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className={`flex items-center justify-center transition-all duration-200 hover:bg-[var(--endspace-bg-secondary)] ${
+          className={`flex items-center justify-center transition-all duration-300 shadow-md cursor-pointer border hover:-translate-y-1 hover:shadow-lg relative group rounded-full ${
             isExpanded 
-              ? 'absolute -left-11 top-0 w-10 h-10 bg-[var(--endspace-bg-primary)]/95 backdrop-blur-sm border border-[var(--endspace-border-base)] border-r-0' 
-              : 'w-11 h-11 bg-[var(--endspace-bg-primary)]/95 backdrop-blur-sm border border-[var(--endspace-border-base)]'
+              ? 'w-10 h-10 bg-[#FBFB46] text-black border-[#FBFB46] absolute -left-10 top-0' 
+              : 'w-10 h-10 bg-white text-gray-400 border-gray-200 hover:bg-[#FBFB46] hover:text-black hover:border-[#FBFB46]'
           }`}
           title={isExpanded ? 'Collapse TOC' : 'Expand TOC'}
         >
           {isExpanded ? (
-            <IconChevronRight size={16} stroke={1.5} className="text-blue-400" />
+            <IconChevronRight size={20} stroke={2} className="transform rotate-180" />
           ) : (
-            <IconListTree size={16} stroke={1.5} className="text-blue-400" />
+            <IconListTree size={20} stroke={2} />
           )}
         </button>
 
         {/* Expanded Content */}
         {isExpanded && (
-          <div className="p-4 overflow-hidden">
+          <div className="p-4">
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-[var(--endspace-text-muted)] font-mono text-xs font-bold tracking-widest uppercase flex items-center gap-2">
-                <IconListTree size={14} stroke={1.5} className="text-blue-400" />
-                <span>TOC Index</span>
+              <h3 className="text-sm font-bold text-[var(--endspace-text-primary)] flex items-center">
+                <IconListTree size={16} stroke={2} className="mr-2" />
+                TABLE OF CONTENTS
               </h3>
-              <span className="text-[10px] font-mono text-blue-400">{Math.round(progress)}%</span>
-            </div>
-
-            {/* Progress Bar */}
-            <div className="h-0.5 bg-[var(--endspace-bg-secondary)] mb-4">
-              <div 
-                className="h-full bg-blue-400 transition-all duration-150"
-                style={{ width: `${progress}%` }}
-              />
+              <div className="w-16 h-1 bg-[#FBFB46] rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-[var(--endspace-text-primary)] transition-all duration-300 ease-out"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
             </div>
 
             {/* TOC Items */}
@@ -151,7 +148,7 @@ const FloatingToc = ({ toc }) => {
                       href={`#${id}`}
                       className={`block py-1 text-xs transition-all duration-200 hover:translate-x-1 ${
                         isActive 
-                          ? 'text-blue-400 font-medium' 
+                          ? 'text-black font-bold' 
                           : 'text-[var(--endspace-text-secondary)] hover:text-[var(--endspace-text-primary)]'
                       }`}
                       style={{ 
@@ -174,17 +171,6 @@ const FloatingToc = ({ toc }) => {
               </div>
             </div>
           </div>
-        )}
-
-        {/* Collapsed Progress Indicator */}
-        {!isExpanded && (
-          <div 
-            className="absolute left-0 bottom-0 w-full bg-blue-400/30"
-            style={{ 
-              height: `${progress}%`,
-              transition: 'height 0.15s ease-out'
-            }}
-          />
         )}
       </div>
     </div>
