@@ -6,21 +6,27 @@
  * 特殊页面配置说明 (Special Pages)
  * ============================================
  * 
- * 侧边栏的【Portfolio 作品集页面】和【Friends 友链页面】需要在 Notion 中配置子菜单(SubMenu)：
+ * 以下页面需要在 Notion 中配置菜单(Menu)：
+ * - 【AboutMe 关于我页面】- 点击侧边栏头像跳转
+ * - 【Portfolio 作品集页面】- 侧边栏导航项
+ * - 【Friends 友链页面】- 侧边栏导航项
+ * 
+ * 配置步骤：
  * 1. 在 Notion 的菜单数据库中添加一个新条目
- * 2. 设置 Type 为 SubMenu
- * 3. 设置 Title 为你想要的菜单名称，如 "Portfolio" 或 "Friends"
- * 4. 设置 Slug 为对应的路径，如 "/portfolio" 或 "/friends"
+ * 2. 设置 Type 为 Menu
+ * 3. 设置 Title 为你想要的菜单名称
+ * 4. 设置 Slug 为对应的路径
  * 5. 在 Notion 中创建对应的页面内容
  * 具体可参考NotionNext的帮助手册：https://docs.tangly1024.com/article/notion-next-secondary-menu
  * 
  * 示例配置：
- * | Type      | Title     | Slug      |
- * |-----------|-----------|---------|
- * | SubMenu   | Portfolio | /portfolio |
- * | SubMenu   | Friends   | /friends   |
+ * | Type | Title     | Slug       |
+ * |------|-----------|------------|
+ * | Menu | AboutMe   | /aboutme   |
+ * | Menu | Portfolio | /portfolio |
+ * | Menu | Friends   | /friends   |
  * 
- * 配置完成后，这些页面会自动出现在侧边栏导航中。
+ * 配置完成后，Portfolio 和 Friends 会自动出现在侧边栏导航中。
  */
 
 const CONFIG = {
@@ -41,6 +47,14 @@ const CONFIG = {
   
   // 加载动画中的图片，可以使用public目录下的图片如'/images/logo.png'，也可以使用url如https://example.com/image.png
   ENDSPACE_LOADING_IMAGE: '/svg/cloud.svg', // 加载动画中显示的图片
+
+  // ============================================
+  // 水印文字配置 (Watermark Text)
+  // ============================================
+  // 首页标题栏背景滚动水印文字（大字循环动画）
+  ENDSPACE_BANNER_WATERMARK_TEXT: 'CLOUD09_SPACE',
+  // 文章详情页右上角水印文字
+  ENDSPACE_ARTICLE_WATERMARK_TEXT: 'CLOUD09',
 
   // ============================================
   // 菜单配置 (Menu)
