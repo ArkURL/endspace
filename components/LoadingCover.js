@@ -19,7 +19,7 @@ export const LoadingCover = () => {
   const displayProgressRef = useRef(0)
 
   // Configurable texts
-  const siteName = siteConfig('ENDSPACE_LOADING_SITE_NAME', null, CONFIG) || siteConfig('TITLE') || 'CLOUD09_SPACE'
+  const siteName = siteConfig('ENDSPACE_LOADING_SITE_NAME', null, CONFIG) || siteConfig('TITLE') || 'SAILINGROOT_SPACE'
   const textInit = siteConfig('ENDSPACE_LOADING_TEXT_INIT', 'INITIALIZING', CONFIG)
   const textLoading = siteConfig('ENDSPACE_LOADING_TEXT_LOADING', 'LOADING', CONFIG)
   const textComplete = siteConfig('ENDSPACE_LOADING_TEXT_COMPLETE', 'READY', CONFIG)
@@ -46,12 +46,12 @@ export const LoadingCover = () => {
     const countResources = () => {
       const images = document.images
       totalResources = Math.max(1, images.length)
-      
+
       // Count already loaded images
       for (let i = 0; i < images.length; i++) {
         if (images[i].complete) loadedResources++
       }
-      
+
       // Add event listeners for remaining images
       for (let i = 0; i < images.length; i++) {
         if (!images[i].complete) {
@@ -67,7 +67,7 @@ export const LoadingCover = () => {
     const animate = () => {
       const target = targetProgressRef.current
       const current = displayProgressRef.current
-      
+
       if (current < target) {
         // Smooth easing - larger step when further from target
         const diff = target - current
@@ -75,17 +75,17 @@ export const LoadingCover = () => {
         displayProgressRef.current = Math.min(target, current + step)
         setDisplayProgress(Math.floor(displayProgressRef.current))
       }
-      
+
       rafId = requestAnimationFrame(animate)
     }
     rafId = requestAnimationFrame(animate)
 
     // Update target progress based on actual loading
     const progressInterval = setInterval(() => {
-      const realProgress = totalResources > 0 
-        ? Math.floor((loadedResources / totalResources) * 100) 
+      const realProgress = totalResources > 0
+        ? Math.floor((loadedResources / totalResources) * 100)
         : 0
-      
+
       // When onLoading becomes false, go to 100
       if (!onLoading) {
         targetProgressRef.current = 100
@@ -115,10 +115,10 @@ export const LoadingCover = () => {
   useEffect(() => {
     if (displayProgress >= 100 && !hasCompletedRef.current) {
       hasCompletedRef.current = true
-      
+
       // Immediately start exit sequence
       setPhase('complete')
-      
+
       const sweepTimer = setTimeout(() => {
         setPhase('sweeping')
         setTimeout(() => {
