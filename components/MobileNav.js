@@ -79,12 +79,12 @@ export const MobileNav = (props) => {
   // All navigation items
   const menuItems = [
     { name: 'Home', path: '/' },
-    { name: 'Category', path: '/category', show: siteConfig('ENDSPACE_MENU_CATEGORY', null, CONFIG) },
-    { name: 'Tag', path: '/tag', show: siteConfig('ENDSPACE_MENU_TAG', null, CONFIG) },
-    { name: 'Archive', path: '/archive', show: siteConfig('ENDSPACE_MENU_ARCHIVE', null, CONFIG) },
+    { name: 'Category', path: '/category', show: siteConfig('P3_MENU_CATEGORY', null, CONFIG) },
+    { name: 'Tag', path: '/tag', show: siteConfig('P3_MENU_TAG', null, CONFIG) },
+    { name: 'Archive', path: '/archive', show: siteConfig('P3_MENU_ARCHIVE', null, CONFIG) },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Friends', path: '/friends' },
-    { name: 'Search', path: '/search', show: siteConfig('ENDSPACE_MENU_SEARCH', null, CONFIG) }
+    { name: 'Search', path: '/search', show: siteConfig('P3_MENU_SEARCH', null, CONFIG) }
   ].filter(item => item.show !== false)
 
   // Social icon config - using contact.config.js settings
@@ -155,7 +155,7 @@ export const MobileNav = (props) => {
   return (
     <>
       {/* Top Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 md:hidden bg-white border-b border-[var(--endspace-border-base)] safe-area-top">
+      <nav className="fixed top-0 left-0 right-0 z-50 md:hidden bg-white border-b border-[var(--p3-border-base)] safe-area-top">
         <div className="flex items-center justify-between h-20 px-5">
           {/* Left: Avatar */}
           <SmartLink href="/aboutme" title="Profile" className="flex-shrink-0 flex items-center">
@@ -171,7 +171,7 @@ export const MobileNav = (props) => {
           {/* Right: Hamburger Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="w-14 h-14 flex items-center justify-center text-[var(--endspace-text-primary)] hover:text-[#d4d4d8] transition-colors"
+            className="w-14 h-14 flex items-center justify-center text-[var(--p3-text-primary)] hover:text-[#d4d4d8] transition-colors"
             aria-label="Toggle Menu"
           >
             {isMenuOpen ? (
@@ -206,7 +206,7 @@ export const MobileNav = (props) => {
               className={`flex items-center gap-4 py-3 w-full transition-all group ${
                 activeTab === item.name
                   ? 'text-black font-bold'
-                  : 'text-[var(--endspace-text-secondary)] hover:text-black'
+                  : 'text-[var(--p3-text-secondary)] hover:text-black'
               }`}
             >
               <div className={`transition-colors ${activeTab === item.name ? 'text-black' : 'text-gray-400 group-hover:text-black'}`}>
@@ -230,7 +230,7 @@ export const MobileNav = (props) => {
               <a
                 href={`mailto:${email}`}
                 title={email}
-                className="w-9 h-9 flex items-center justify-center rounded-full bg-[var(--endspace-bg-secondary)] text-[var(--endspace-text-muted)] hover:text-[var(--endspace-text-primary)] hover:bg-[#d4d4d8] transition-colors"
+                className="w-9 h-9 flex items-center justify-center rounded-full bg-[var(--p3-bg-secondary)] text-[var(--p3-text-muted)] hover:text-[var(--p3-text-primary)] hover:bg-[#d4d4d8] transition-colors"
               >
                 <MailFillIcon size={16} />
               </a>
@@ -245,7 +245,7 @@ export const MobileNav = (props) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={social.label}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-[var(--endspace-bg-secondary)] text-[var(--endspace-text-muted)] hover:text-[var(--endspace-text-primary)] hover:bg-[#d4d4d8] transition-colors"
+                  className="w-9 h-9 flex items-center justify-center rounded-full bg-[var(--p3-bg-secondary)] text-[var(--p3-text-muted)] hover:text-[var(--p3-text-primary)] hover:bg-[#d4d4d8] transition-colors"
                 >
                   {renderSocialIcon(social.key, social.svg, social.label)}
                 </a>

@@ -7,16 +7,16 @@ import CONFIG from './config'
 
 export const Style = () => {
   // P3R 色板配置
-  const themeColor = siteConfig('ENDSPACE_THEME_COLOR', '#00A0E9', CONFIG)
-  const themeColorDim = siteConfig('ENDSPACE_THEME_COLOR_DIM', 'rgba(0, 160, 233, 0.15)', CONFIG)
-  const bgSurface = siteConfig('ENDSPACE_BG_SURFACE', '#050A1A', CONFIG)
-  const bgSurfaceElevated = siteConfig('ENDSPACE_BG_SURFACE_ELEVATED', '#0A1428', CONFIG)
-  const colorSecondary = siteConfig('ENDSPACE_COLOR_SECONDARY', '#003B71', CONFIG)
-  const colorSecondaryDim = siteConfig('ENDSPACE_COLOR_SECONDARY_DIM', 'rgba(0, 59, 113, 0.5)', CONFIG)
-  const colorAccent = siteConfig('ENDSPACE_COLOR_ACCENT', '#78D2F0', CONFIG)
-  const colorAccentDim = siteConfig('ENDSPACE_COLOR_ACCENT_DIM', 'rgba(120, 210, 240, 0.3)', CONFIG)
-  const btnBg = siteConfig('ENDSPACE_BTN_BG', 'rgba(0, 160, 233, 0.3)', CONFIG)
-  const glowShadow = siteConfig('ENDSPACE_GLOW_SHADOW', '0 0 8px rgba(0, 160, 233, 0.6), 0 0 16px rgba(0, 160, 233, 0.3)', CONFIG)
+  const themeColor = siteConfig('P3_THEME_COLOR', '#00A0E9', CONFIG)
+  const themeColorDim = siteConfig('P3_THEME_COLOR_DIM', 'rgba(0, 160, 233, 0.15)', CONFIG)
+  const bgSurface = siteConfig('P3_BG_SURFACE', '#050A1A', CONFIG)
+  const bgSurfaceElevated = siteConfig('P3_BG_SURFACE_ELEVATED', '#0A1428', CONFIG)
+  const colorSecondary = siteConfig('P3_COLOR_SECONDARY', '#003B71', CONFIG)
+  const colorSecondaryDim = siteConfig('P3_COLOR_SECONDARY_DIM', 'rgba(0, 59, 113, 0.5)', CONFIG)
+  const colorAccent = siteConfig('P3_COLOR_ACCENT', '#78D2F0', CONFIG)
+  const colorAccentDim = siteConfig('P3_COLOR_ACCENT_DIM', 'rgba(120, 210, 240, 0.3)', CONFIG)
+  const btnBg = siteConfig('P3_BTN_BG', 'rgba(0, 160, 233, 0.3)', CONFIG)
+  const glowShadow = siteConfig('P3_GLOW_SHADOW', '0 0 8px rgba(0, 160, 233, 0.6), 0 0 16px rgba(0, 160, 233, 0.3)', CONFIG)
 
   return (
     <style jsx global>{`
@@ -25,74 +25,74 @@ export const Style = () => {
          ============================================ */
       :root {
         /* Light Mode (保留作为备用) */
-        --endspace-bg-base: #fafafa;
-        --endspace-bg-primary: #ffffff;
-        --endspace-bg-secondary: #f4f4f5;
-        --endspace-bg-tertiary: #e4e4e7;
+        --p3-bg-base: #fafafa;
+        --p3-bg-primary: #ffffff;
+        --p3-bg-secondary: #f4f4f5;
+        --p3-bg-tertiary: #e4e4e7;
         
-        --endspace-text-primary: #18181b;
-        --endspace-text-secondary: #52525b;
-        --endspace-text-muted: #a1a1aa;
+        --p3-text-primary: #18181b;
+        --p3-text-secondary: #52525b;
+        --p3-text-muted: #a1a1aa;
         
         /* P3R 主题色 */
-        --endspace-accent-yellow: ${themeColor};
-        --endspace-accent-yellow-dim: ${themeColorDim};
-        --endspace-accent-cyan: ${colorAccent};
-        --endspace-accent-cyan-dim: ${colorAccentDim};
-        --endspace-color-secondary: ${colorSecondary};
-        --endspace-color-secondary-dim: ${colorSecondaryDim};
+        --p3-accent-yellow: ${themeColor};
+        --p3-accent-yellow-dim: ${themeColorDim};
+        --p3-accent-cyan: ${colorAccent};
+        --p3-accent-cyan-dim: ${colorAccentDim};
+        --p3-color-secondary: ${colorSecondary};
+        --p3-color-secondary-dim: ${colorSecondaryDim};
         
         /* Borders & Lines */
-        --endspace-border-base: #e4e4e7;
-        --endspace-border-active: ${themeColor};
-        --endspace-grid-color: rgba(0,0,0,0.03);
+        --p3-border-base: #e4e4e7;
+        --p3-border-active: ${themeColor};
+        --p3-grid-color: rgba(0,0,0,0.03);
         
         /* P3R 特效 */
-        --endspace-btn-glass-bg: ${btnBg};
-        --endspace-glow-shadow: ${glowShadow};
+        --p3-btn-glass-bg: ${btnBg};
+        --p3-glow-shadow: ${glowShadow};
         
         /* Shadows */
-        --endspace-shadow-base: 
+        --p3-shadow-base: 
           0 1px 2px rgba(0, 0, 0, 0.04),
           0 2px 4px rgba(0, 0, 0, 0.04),
           0 4px 8px rgba(0, 0, 0, 0.04);
-        --endspace-shadow-hover: 
+        --p3-shadow-hover: 
           0 4px 8px rgba(0, 0, 0, 0.08),
           0 8px 16px rgba(0, 0, 0, 0.06),
           0 16px 32px rgba(0, 0, 0, 0.04),
-          0 0 0 1px var(--endspace-accent-yellow);
+          0 0 0 1px var(--p3-accent-yellow);
       }
 
       /* Dark Mode - P3R 深蓝风格 */
       .dark {
-        --endspace-bg-base: ${bgSurface};
-        --endspace-bg-primary: ${bgSurfaceElevated};
-        --endspace-bg-secondary: ${colorSecondary};
-        --endspace-bg-tertiary: ${colorSecondaryDim};
+        --p3-bg-base: ${bgSurface};
+        --p3-bg-primary: ${bgSurfaceElevated};
+        --p3-bg-secondary: ${colorSecondary};
+        --p3-bg-tertiary: ${colorSecondaryDim};
         
-        --endspace-text-primary: #E8F4FC;
-        --endspace-text-secondary: ${colorAccent};
-        --endspace-text-muted: rgba(120, 210, 240, 0.6);
+        --p3-text-primary: #E8F4FC;
+        --p3-text-secondary: ${colorAccent};
+        --p3-text-muted: rgba(120, 210, 240, 0.6);
         
-        --endspace-accent-yellow: ${themeColor};
-        --endspace-accent-yellow-dim: ${themeColorDim};
-        --endspace-accent-cyan: ${colorAccent};
-        --endspace-accent-cyan-dim: ${colorAccentDim};
-        --endspace-color-secondary: ${colorSecondary};
-        --endspace-color-secondary-dim: ${colorSecondaryDim};
+        --p3-accent-yellow: ${themeColor};
+        --p3-accent-yellow-dim: ${themeColorDim};
+        --p3-accent-cyan: ${colorAccent};
+        --p3-accent-cyan-dim: ${colorAccentDim};
+        --p3-color-secondary: ${colorSecondary};
+        --p3-color-secondary-dim: ${colorSecondaryDim};
         
-        --endspace-border-base: ${colorSecondary};
-        --endspace-border-active: ${themeColor};
-        --endspace-grid-color: rgba(0, 160, 233, 0.05);
+        --p3-border-base: ${colorSecondary};
+        --p3-border-active: ${themeColor};
+        --p3-grid-color: rgba(0, 160, 233, 0.05);
         
-        --endspace-btn-glass-bg: ${btnBg};
-        --endspace-glow-shadow: ${glowShadow};
+        --p3-btn-glass-bg: ${btnBg};
+        --p3-glow-shadow: ${glowShadow};
         
-        --endspace-shadow-base: 
+        --p3-shadow-base: 
           0 1px 2px rgba(0, 0, 0, 0.4),
           0 2px 4px rgba(0, 0, 0, 0.3),
           0 4px 8px rgba(0, 0, 0, 0.2);
-        --endspace-shadow-hover: 
+        --p3-shadow-hover: 
           ${glowShadow},
           0 8px 16px rgba(0, 0, 0, 0.4),
           0 16px 32px rgba(0, 0, 0, 0.3);
@@ -118,8 +118,8 @@ export const Style = () => {
          Global Base Styles
          ============================================ */
       #theme-endspace {
-        background-color: var(--endspace-bg-base);
-        color: var(--endspace-text-primary);
+        background-color: var(--p3-bg-base);
+        color: var(--p3-text-primary);
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         overflow-x: hidden;
         /* Custom Tech Cursor - Sharp Spearhead with Heavy Shadow */
@@ -137,8 +137,8 @@ export const Style = () => {
         position: fixed;
         inset: 0;
         background-image: 
-          linear-gradient(var(--endspace-grid-color) 1px, transparent 1px),
-          linear-gradient(90deg, var(--endspace-grid-color) 1px, transparent 1px);
+          linear-gradient(var(--p3-grid-color) 1px, transparent 1px),
+          linear-gradient(90deg, var(--p3-grid-color) 1px, transparent 1px);
         background-size: 40px 40px;
         z-index: -1;
         pointer-events: none;
@@ -165,12 +165,12 @@ export const Style = () => {
       
       /* P3R 毛玻璃按钮 - 30% 透明度背景 + backdrop-filter */
       .p3r-btn {
-        background: var(--endspace-btn-glass-bg);
+        background: var(--p3-btn-glass-bg);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid var(--endspace-border-active);
-        box-shadow: var(--endspace-glow-shadow);
-        color: var(--endspace-text-primary);
+        border: 1px solid var(--p3-border-active);
+        box-shadow: var(--p3-glow-shadow);
+        color: var(--p3-text-primary);
         padding: 0.75rem 1.5rem;
         font-family: 'JetBrains Mono', monospace;
         font-weight: 600;
@@ -194,14 +194,14 @@ export const Style = () => {
       
       .p3r-btn:active {
         transform: translateY(0);
-        box-shadow: var(--endspace-glow-shadow);
+        box-shadow: var(--p3-glow-shadow);
       }
       
       /* P3R 卡片 - 发光边框 + 几何切割 */
       .p3r-card {
-        background: var(--endspace-bg-primary);
-        border: 1px solid var(--endspace-border-active);
-        box-shadow: var(--endspace-glow-shadow);
+        background: var(--p3-bg-primary);
+        border: 1px solid var(--p3-border-active);
+        box-shadow: var(--p3-glow-shadow);
         position: relative;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         /* 几何切割感 */
@@ -218,16 +218,16 @@ export const Style = () => {
       
       /* P3R 面板 - 毛玻璃效果 */
       .p3r-panel {
-        background: var(--endspace-btn-glass-bg);
+        background: var(--p3-btn-glass-bg);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
-        border: 1px solid var(--endspace-color-secondary);
+        border: 1px solid var(--p3-color-secondary);
         box-shadow: inset 0 1px 0 rgba(120, 210, 240, 0.1);
       }
       
       /* P3R 发光文字 */
       .p3r-glow-text {
-        color: var(--endspace-accent-cyan);
+        color: var(--p3-accent-cyan);
         text-shadow: 
           0 0 4px rgba(120, 210, 240, 0.6),
           0 0 8px rgba(120, 210, 240, 0.4),
@@ -249,9 +249,9 @@ export const Style = () => {
         height: 2px;
         background: linear-gradient(90deg, 
           transparent, 
-          var(--endspace-accent-cyan) 20%, 
-          var(--endspace-border-active) 50%,
-          var(--endspace-accent-cyan) 80%, 
+          var(--p3-accent-cyan) 20%, 
+          var(--p3-border-active) 50%,
+          var(--p3-accent-cyan) 80%, 
           transparent
         );
         animation: p3r-scan 4s linear infinite;
@@ -265,7 +265,7 @@ export const Style = () => {
         position: absolute;
         width: 16px;
         height: 16px;
-        border: 2px solid var(--endspace-border-active);
+        border: 2px solid var(--p3-border-active);
         pointer-events: none;
       }
       
@@ -286,9 +286,9 @@ export const Style = () => {
       /* ============================================
          "Float" Container Styles (Glassmorphism -> Solid Block)
          ============================================ */
-      .endspace-frame {
-        background: var(--endspace-bg-primary); /* Solid background for floating block effect */
-        border: 1px solid var(--endspace-border-base);
+      .p3-frame {
+        background: var(--p3-bg-primary); /* Solid background for floating block effect */
+        border: 1px solid var(--p3-border-base);
         position: relative;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 
@@ -297,42 +297,42 @@ export const Style = () => {
         z-index: 10;
       }
 
-      .dark .endspace-frame {
+      .dark .p3-frame {
         background: #18181b; /* Solid dark background */
         border-color: #3f3f46;
       }
 
       /* Corner Markers (Minimalist L-shape) */
-      .endspace-frame::before {
+      .p3-frame::before {
         content: '';
         position: absolute;
         top: -1px; left: -1px;
         width: 0; height: 0;
-        border-top: 3px solid var(--endspace-text-primary);
-        border-left: 3px solid var(--endspace-text-primary);
+        border-top: 3px solid var(--p3-text-primary);
+        border-left: 3px solid var(--p3-text-primary);
         transition: all 0.3s ease;
         opacity: 0;
         z-index: 20;
       }
-      .endspace-frame::after {
+      .p3-frame::after {
         content: '';
         position: absolute;
         bottom: -1px; right: -1px;
         width: 0; height: 0;
-        border-bottom: 3px solid var(--endspace-text-primary);
-        border-right: 3px solid var(--endspace-text-primary);
+        border-bottom: 3px solid var(--p3-text-primary);
+        border-right: 3px solid var(--p3-text-primary);
         transition: all 0.3s ease;
         opacity: 0;
         z-index: 20;
       }
 
       /* Active State: Heavy Corners appear */
-      .endspace-frame:hover {
-        border-color: var(--endspace-border-active);
-        box-shadow: var(--endspace-shadow-hover);
+      .p3-frame:hover {
+        border-color: var(--p3-border-active);
+        box-shadow: var(--p3-shadow-hover);
         transform: translateY(-2px);
       }
-      .endspace-frame:hover::before, .endspace-frame:hover::after {
+      .p3-frame:hover::before, .p3-frame:hover::after {
         opacity: 1;
         width: 16px; height: 16px;
       }
@@ -341,19 +341,19 @@ export const Style = () => {
          Card Styles - Enhanced 3D Depth
          ============================================ */
       .endspace-card {
-        background: var(--endspace-bg-primary); /* Solid background */
-        border: 1px solid var(--endspace-border-base);
+        background: var(--p3-bg-primary); /* Solid background */
+        border: 1px solid var(--p3-border-base);
         position: relative;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: var(--endspace-shadow-base);
+        box-shadow: var(--p3-shadow-base);
       }
 
       .endspace-card:hover {
-        border-color: var(--endspace-border-active);
+        border-color: var(--p3-border-active);
         box-shadow: 
           0 20px 25px -5px rgba(0, 0, 0, 0.1), 
           0 10px 10px -5px rgba(0, 0, 0, 0.04),
-          0 0 0 1px var(--endspace-accent-yellow); /* Glow border */
+          0 0 0 1px var(--p3-accent-yellow); /* Glow border */
         transform: translateY(-4px) scale(1.01);
         z-index: 20;
       }
@@ -366,7 +366,7 @@ export const Style = () => {
          Notion Content Overrides (Light Mode)
          ============================================ */
       #notion-article {
-        color: var(--endspace-text-primary);
+        color: var(--p3-text-primary);
         font-size: 1.05rem;
         line-height: 1.75;
       }
@@ -374,7 +374,7 @@ export const Style = () => {
       /* Headers - NieR: Automata Style Dynamic Shadow */
       /* Requirement: Misaligned when not hovered, Merged when hovered */
       #notion-article h1, #notion-article h2, #notion-article h3 {
-        color: var(--endspace-text-primary);
+        color: var(--p3-text-primary);
         font-weight: 800;
         margin-top: 2.5em;
         margin-bottom: 1em;
@@ -422,7 +422,7 @@ export const Style = () => {
         position: absolute;
         left: 0; top: 0.2em; bottom: 0.2em;
         width: 6px;
-        background: var(--endspace-accent-yellow);
+        background: var(--p3-accent-yellow);
         box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
       }
@@ -431,16 +431,16 @@ export const Style = () => {
       #notion-article h1:hover::before,
       #notion-article h2:hover::before,
       #notion-article h3:hover::before {
-        background: var(--endspace-text-primary);
+        background: var(--p3-text-primary);
         width: 8px;
         box-shadow: none;
       }
 
       /* Quotes */
       #notion-article blockquote {
-        background: var(--endspace-bg-secondary);
-        border-left: 3px solid var(--endspace-text-primary);
-        color: var(--endspace-text-secondary);
+        background: var(--p3-bg-secondary);
+        border-left: 3px solid var(--p3-text-primary);
+        color: var(--p3-text-secondary);
         padding: 1.2rem 1.5rem;
         margin: 2rem 0;
         font-style: italic;
@@ -449,24 +449,24 @@ export const Style = () => {
       /* Lists */
       #notion-article ul li, #notion-article ol li {
         margin-bottom: 0.5em;
-        color: var(--endspace-text-secondary);
+        color: var(--p3-text-secondary);
       }
       #notion-article ul li::marker {
-        color: var(--endspace-accent-cyan);
+        color: var(--p3-accent-cyan);
         font-weight: bold;
       }
 
       /* Links in Content */
       #notion-article a {
-        color: var(--endspace-text-primary);
+        color: var(--p3-text-primary);
         text-decoration: none;
-        border-bottom: 2px solid var(--endspace-accent-cyan-dim);
+        border-bottom: 2px solid var(--p3-accent-cyan-dim);
         transition: all 0.2s;
         font-weight: 600;
       }
       #notion-article a:hover {
-        background: var(--endspace-accent-cyan-dim);
-        border-bottom-color: var(--endspace-accent-cyan);
+        background: var(--p3-accent-cyan-dim);
+        border-bottom-color: var(--p3-accent-cyan);
       }
 
       /* Code Blocks */
@@ -474,7 +474,7 @@ export const Style = () => {
         background: #18181b !important;
         border: 1px solid rgba(0,0,0,0.1);
         border-radius: 4px !important;
-        box-shadow: var(--endspace-shadow-base);
+        box-shadow: var(--p3-shadow-base);
       }
 
       /* ============================================
@@ -482,8 +482,8 @@ export const Style = () => {
          ============================================ */
       .endspace-btn {
         background: transparent;
-        border: 2px solid var(--endspace-border-active);
-        color: var(--endspace-text-primary);
+        border: 2px solid var(--p3-border-active);
+        color: var(--p3-text-primary);
         padding: 0.6rem 1.5rem;
         font-family: 'JetBrains Mono', monospace;
         font-weight: 700;
@@ -496,14 +496,14 @@ export const Style = () => {
       }
       
       .endspace-btn:hover {
-        background: var(--endspace-border-active);
+        background: var(--p3-border-active);
         color: white;
         transform: translateY(-1px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       }
 
       .endspace-button-primary {
-        background: var(--endspace-border-active);
+        background: var(--p3-border-active);
         border: none;
         color: white;
         padding: 0.75rem 1.5rem;
@@ -526,7 +526,7 @@ export const Style = () => {
       .scan-line {
         width: 100%;
         height: 1px;
-        background: var(--endspace-border-base);
+        background: var(--p3-border-base);
         margin: 1rem 0;
       }
 
@@ -534,9 +534,9 @@ export const Style = () => {
       .spectrum-bar {
         height: 2px;
         background: linear-gradient(90deg, 
-          var(--endspace-accent-cyan) 0%, 
-          var(--endspace-accent-yellow) 50%, 
-          var(--endspace-accent-cyan) 100%
+          var(--p3-accent-cyan) 0%, 
+          var(--p3-accent-yellow) 50%, 
+          var(--p3-accent-cyan) 100%
         );
       }
 
@@ -544,8 +544,8 @@ export const Style = () => {
       @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
       .loading-radar {
         width: 24px; height: 24px;
-        border: 2px solid var(--endspace-border-base);
-        border-top-color: var(--endspace-text-primary);
+        border: 2px solid var(--p3-border-base);
+        border-top-color: var(--p3-text-primary);
         border-radius: 50%;
         animation: spin 0.8s linear infinite;
       }
@@ -559,16 +559,16 @@ export const Style = () => {
         position: absolute;
         top: 0; left: 0;
         width: 8px; height: 8px;
-        border-top: 2px solid var(--endspace-accent-cyan);
-        border-left: 2px solid var(--endspace-accent-cyan);
+        border-top: 2px solid var(--p3-accent-cyan);
+        border-left: 2px solid var(--p3-accent-cyan);
       }
       .tech-corner::after {
         content: '';
         position: absolute;
         bottom: 0; right: 0;
         width: 8px; height: 8px;
-        border-bottom: 2px solid var(--endspace-accent-cyan);
-        border-right: 2px solid var(--endspace-accent-cyan);
+        border-bottom: 2px solid var(--p3-accent-cyan);
+        border-right: 2px solid var(--p3-accent-cyan);
       }
 
       /* ============================================
@@ -591,7 +591,7 @@ export const Style = () => {
         }
 
         /* Reduce padding on mobile */
-        .endspace-frame {
+        .p3-frame {
           padding: 1rem !important;
         }
 
@@ -621,7 +621,7 @@ export const Style = () => {
          Player Styles
          ============================================ */
       .endspace-player-glow {
-        box-shadow: 0 0 10px var(--endspace-accent-yellow);
+        box-shadow: 0 0 10px var(--p3-accent-yellow);
       }
 
       @keyframes rotate {
@@ -652,8 +652,8 @@ export const Style = () => {
         height: 2px;
         background: linear-gradient(90deg, 
           transparent, 
-          var(--endspace-accent-cyan) 20%, 
-          var(--endspace-accent-cyan) 80%, 
+          var(--p3-accent-cyan) 20%, 
+          var(--p3-accent-cyan) 80%, 
           transparent
         );
         animation: ef-scan-horizontal 4s linear infinite;
@@ -676,8 +676,8 @@ export const Style = () => {
         height: 100%;
         background: linear-gradient(180deg, 
           transparent, 
-          var(--endspace-accent-cyan) 30%, 
-          var(--endspace-accent-cyan) 70%, 
+          var(--p3-accent-cyan) 30%, 
+          var(--p3-accent-cyan) 70%, 
           transparent
         );
         animation: ef-scan-vertical 6s linear infinite;
@@ -706,8 +706,8 @@ export const Style = () => {
       /* Button with Left Highlight Bar */
       .ef-button {
         position: relative;
-        background: var(--endspace-bg-primary);
-        border: 1px solid var(--endspace-border-base);
+        background: var(--p3-bg-primary);
+        border: 1px solid var(--p3-border-base);
         padding: 0.75rem 1.5rem 0.75rem 2rem;
         font-family: 'JetBrains Mono', monospace;
         font-weight: 600;
@@ -726,19 +726,19 @@ export const Style = () => {
         transform: translateY(-50%);
         width: 3px;
         height: 55%;
-        background-color: var(--endspace-accent-yellow);
+        background-color: var(--p3-accent-yellow);
         transition: all 0.2s ease;
       }
       
       .ef-button:hover {
-        background: var(--endspace-border-active);
+        background: var(--p3-border-active);
         color: white;
-        border-color: var(--endspace-border-active);
+        border-color: var(--p3-border-active);
       }
       
       .ef-button:hover::before {
         height: 70%;
-        background-color: var(--endspace-accent-yellow);
+        background-color: var(--p3-accent-yellow);
       }
 
       /* ============================================
@@ -748,13 +748,13 @@ export const Style = () => {
       /* Enhanced Card with texture */
       .ef-card {
         position: relative;
-        background: var(--endspace-bg-primary);
-        border: 1px solid var(--endspace-border-base);
+        background: var(--p3-bg-primary);
+        border: 1px solid var(--p3-border-base);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
       
       .ef-card:hover {
-        border-color: var(--endspace-accent-yellow);
+        border-color: var(--p3-accent-yellow);
         box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
         transform: translateY(-2px);
       }
@@ -765,7 +765,7 @@ export const Style = () => {
         top: -1px;
         left: -1px;
         padding: 0.25rem 0.5rem;
-        background: var(--endspace-accent-yellow);
+        background: var(--p3-accent-yellow);
         color: #000;
         font-family: 'JetBrains Mono', monospace;
         font-size: 0.7rem;
@@ -815,11 +815,11 @@ export const Style = () => {
       
       @keyframes ef-border-glow {
         0%, 100% { 
-          border-color: var(--endspace-border-base);
+          border-color: var(--p3-border-base);
           box-shadow: none;
         }
         50% { 
-          border-color: var(--endspace-accent-cyan);
+          border-color: var(--p3-accent-cyan);
           box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
         }
       }
@@ -853,9 +853,9 @@ export const Style = () => {
          ============================================ */
       .endspace-btn-3d {
         position: relative;
-        background: var(--endspace-bg-primary);
-        border: 2px solid var(--endspace-accent-yellow);
-        color: var(--endspace-text-primary);
+        background: var(--p3-bg-primary);
+        border: 2px solid var(--p3-accent-yellow);
+        color: var(--p3-text-primary);
         padding: 0.75rem 1.5rem;
         font-weight: 700;
         text-transform: uppercase;
@@ -906,7 +906,7 @@ export const Style = () => {
         transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         z-index: 1;
         /* Default Text Color */
-        color: var(--endspace-text-muted); 
+        color: var(--p3-text-muted); 
         border-radius: 1px; /* Rounded corners as seen in screenshot */
         margin-bottom: 2px; /* Slight spacing between items */
       }
@@ -926,7 +926,7 @@ export const Style = () => {
       
       /* Active / Hover State Text Color */
       .nier-nav-item:hover, .nier-nav-item.active {
-        color: var(--endspace-text-primary) !important;
+        color: var(--p3-text-primary) !important;
       }
       
       /* Hover State: Slide to full width */
@@ -995,7 +995,7 @@ export const Style = () => {
         display: block;
         width: 4px;
         height: 18px;
-        background-color: var(--endspace-accent-yellow); /* 主题色 */
+        background-color: var(--p3-accent-yellow); /* 主题色 */
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Rectangle */
       }
@@ -1003,7 +1003,7 @@ export const Style = () => {
       .ef-btn:hover .ef-btn-indicator {
         width: 12px;
         height: 12px;
-        background-color: var(--endspace-accent-yellow);
+        background-color: var(--p3-accent-yellow);
         clip-path: polygon(0 0, 100% 50%, 0 100%); /* Triangle */
       }
       

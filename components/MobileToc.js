@@ -100,7 +100,7 @@ const MobileToc = ({ toc }) => {
         className="fixed right-4 bottom-24 z-40 md:hidden 
                    w-10 h-10 flex items-center justify-center shadow-md cursor-pointer border rounded-full 
                    bg-white text-gray-400 border-gray-200
-                   hover:bg-[var(--endspace-accent-yellow)] hover:text-black hover:border-[var(--endspace-accent-yellow)] hover:shadow-lg hover:-translate-y-1
+                   hover:bg-[var(--p3-accent-yellow)] hover:text-black hover:border-[var(--p3-accent-yellow)] hover:shadow-lg hover:-translate-y-1
                    transition-all duration-300 group"
         title="Table of Contents"
       >
@@ -120,14 +120,14 @@ const MobileToc = ({ toc }) => {
 
       {/* TOC Panel - Slide up from bottom */}
       <div
-        className={`fixed left-0 right-0 bottom-0 z-50 md:hidden bg-[#f7f9fe] border-t border-[var(--endspace-border-base)] transition-transform duration-300 ease-out ${isOpen ? 'translate-y-0' : 'translate-y-full'
+        className={`fixed left-0 right-0 bottom-0 z-50 md:hidden bg-[#f7f9fe] border-t border-[var(--p3-border-base)] transition-transform duration-300 ease-out ${isOpen ? 'translate-y-0' : 'translate-y-full'
           }`}
         style={{ maxHeight: '70vh' }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--endspace-border-base)] bg-white">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-[var(--p3-border-base)] bg-white">
           <div className="flex items-center gap-3">
-            <ListCheck2Icon size={16} className="text-[var(--endspace-accent-yellow)]" />
+            <ListCheck2Icon size={16} className="text-[var(--p3-accent-yellow)]" />
             <span className="text-sm font-mono font-bold text-black uppercase">TOC INDEX</span>
             <span className="text-xs font-mono text-gray-400">{toc.length} sections</span>
           </div>
@@ -142,7 +142,7 @@ const MobileToc = ({ toc }) => {
         {/* Progress Bar */}
         <div className="h-1 bg-gray-100">
           <div
-            className="h-full bg-[var(--endspace-accent-yellow)] transition-all duration-150"
+            className="h-full bg-[var(--p3-accent-yellow)] transition-all duration-150"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -164,7 +164,7 @@ const MobileToc = ({ toc }) => {
                   key={id}
                   onClick={() => handleItemClick(id)}
                   className={`w-full text-left py-3 px-4 text-sm transition-all duration-200 border-l-2 ${isActive
-                      ? 'border-[var(--endspace-accent-yellow)] text-black font-bold bg-[var(--endspace-accent-yellow)]/10'
+                      ? 'border-[var(--p3-accent-yellow)] text-black font-bold bg-[var(--p3-accent-yellow)]/10'
                       : 'border-transparent text-gray-500 hover:text-black hover:bg-white'
                     }`}
                   style={{
@@ -181,8 +181,8 @@ const MobileToc = ({ toc }) => {
         </div>
 
         {/* Footer */}
-        <div className="px-5 py-3 border-t border-[var(--endspace-border-base)] bg-[var(--endspace-bg-secondary)]">
-          <div className="flex items-center justify-between text-xs font-mono text-[var(--endspace-text-muted)]">
+        <div className="px-5 py-3 border-t border-[var(--p3-border-base)] bg-[var(--p3-bg-secondary)]">
+          <div className="flex items-center justify-between text-xs font-mono text-[var(--p3-text-muted)]">
             <span>{Math.round(progress)}% READ</span>
             <span>Tap to navigate</span>
           </div>

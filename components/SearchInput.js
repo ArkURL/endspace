@@ -27,7 +27,7 @@ export const SearchInput = ({ keyword = '', locale }) => {
   }
 
   return (
-    <div className={`endspace-frame p-6 transition-colors ${isFocused ? 'border-[var(--endspace-accent-yellow)]' : ''}`}>
+    <div className={`p3-frame p-6 transition-colors ${isFocused ? 'border-[var(--p3-accent-yellow)]' : ''}`}>
       <form onSubmit={handleSearch} className="space-y-4">
         {/* Search Label */}
         <div className="flex items-center gap-2 text-black tech-text tracking-wider">
@@ -44,7 +44,7 @@ export const SearchInput = ({ keyword = '', locale }) => {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             placeholder={locale?.SEARCH?.ARTICLES || 'Input query...'}
-            className="w-full px-4 py-3 bg-[var(--endspace-bg-secondary)] border border-[var(--endspace-border-base)] text-[var(--endspace-text-primary)] focus:bg-black focus:text-[var(--endspace-accent-yellow)] focus:border-[var(--endspace-accent-yellow)] focus:outline-none transition-colors pr-24 tech-text text-sm placeholder-[var(--endspace-text-muted)]"
+            className="w-full px-4 py-3 bg-[var(--p3-bg-secondary)] border border-[var(--p3-border-base)] text-[var(--p3-text-primary)] focus:bg-black focus:text-[var(--p3-accent-yellow)] focus:border-[var(--p3-accent-yellow)] focus:outline-none transition-colors pr-24 tech-text text-sm placeholder-[var(--p3-text-muted)]"
           />
 
           {/* Clear Button */}
@@ -52,7 +52,7 @@ export const SearchInput = ({ keyword = '', locale }) => {
             <button
               type="button"
               onClick={handleClear}
-              className="absolute right-16 top-1/2 -translate-y-1/2 text-[var(--endspace-text-muted)] hover:text-red-500 transition-colors px-2"
+              className="absolute right-16 top-1/2 -translate-y-1/2 text-[var(--p3-text-muted)] hover:text-red-500 transition-colors px-2"
             >
               <IconX size={14} stroke={1.5} />
             </button>
@@ -61,14 +61,14 @@ export const SearchInput = ({ keyword = '', locale }) => {
           {/* Search Button (Enter) */}
           <button
             type="submit"
-            className="absolute right-1 top-1 bottom-1 px-3 bg-[var(--endspace-bg-tertiary)] text-black hover:bg-[var(--endspace-accent-yellow)] hover:text-black transition-colors font-bold text-xs border-l border-[var(--endspace-border-base)]"
+            className="absolute right-1 top-1 bottom-1 px-3 bg-[var(--p3-bg-tertiary)] text-black hover:bg-[var(--p3-accent-yellow)] hover:text-black transition-colors font-bold text-xs border-l border-[var(--p3-border-base)]"
           >
             GO
           </button>
         </div>
 
         {/* Status Line */}
-        <div className="flex items-center justify-between text-[10px] text-[var(--endspace-text-muted)] font-mono">
+        <div className="flex items-center justify-between text-[10px] text-[var(--p3-text-muted)] font-mono">
           <div>
             SYSTEM_STATUS: <span className="text-green-500">ONLINE</span>
           </div>

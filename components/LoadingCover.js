@@ -19,14 +19,14 @@ export const LoadingCover = () => {
   const displayProgressRef = useRef(0)
 
   // Configurable texts
-  const siteName = siteConfig('ENDSPACE_LOADING_SITE_NAME', null, CONFIG) || siteConfig('TITLE') || 'SAILINGROOT_SPACE'
-  const textInit = siteConfig('ENDSPACE_LOADING_TEXT_INIT', 'INITIALIZING', CONFIG)
-  const textLoading = siteConfig('ENDSPACE_LOADING_TEXT_LOADING', 'LOADING', CONFIG)
-  const textComplete = siteConfig('ENDSPACE_LOADING_TEXT_COMPLETE', 'READY', CONFIG)
-  const textSweeping = siteConfig('ENDSPACE_LOADING_TEXT_SWEEPING', 'LAUNCHING', CONFIG)
-  const textFadeout = siteConfig('ENDSPACE_LOADING_TEXT_FADEOUT', 'WELCOME', CONFIG)
+  const siteName = siteConfig('P3_LOADING_SITE_NAME', null, CONFIG) || siteConfig('TITLE') || 'SAILINGROOT_SPACE'
+  const textInit = siteConfig('P3_LOADING_TEXT_INIT', 'INITIALIZING', CONFIG)
+  const textLoading = siteConfig('P3_LOADING_TEXT_LOADING', 'LOADING', CONFIG)
+  const textComplete = siteConfig('P3_LOADING_TEXT_COMPLETE', 'READY', CONFIG)
+  const textSweeping = siteConfig('P3_LOADING_TEXT_SWEEPING', 'LAUNCHING', CONFIG)
+  const textFadeout = siteConfig('P3_LOADING_TEXT_FADEOUT', 'WELCOME', CONFIG)
   // Custom Loading Image
-  const loadingImage = siteConfig('ENDSPACE_LOADING_IMAGE', null, CONFIG)
+  const loadingImage = siteConfig('P3_LOADING_IMAGE', null, CONFIG)
 
   // Resource loading tracking and smooth animation
   useEffect(() => {
@@ -240,7 +240,7 @@ export const LoadingCover = () => {
           left: 0;
           width: 100%;
           height: var(--progress);
-          background: var(--endspace-accent-yellow, #00A0E9);
+          background: var(--p3-accent-yellow, #00A0E9);
           transition: height 0.05s linear;
         }
 
@@ -262,7 +262,7 @@ export const LoadingCover = () => {
           font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
           font-size: clamp(32px, 5vw, 48px);
           font-weight: 700;
-          color: var(--endspace-accent-yellow, #00A0E9);
+          color: var(--p3-accent-yellow, #00A0E9);
           letter-spacing: 2px;
           line-height: 1;
         }
@@ -276,7 +276,7 @@ export const LoadingCover = () => {
         .status-dot {
           width: 6px;
           height: 6px;
-          background: var(--endspace-accent-yellow, #00A0E9);
+          background: var(--p3-accent-yellow, #00A0E9);
           border-radius: 50%;
           animation: blink 0.8s ease-in-out infinite;
         }
@@ -285,7 +285,7 @@ export const LoadingCover = () => {
           font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
           font-size: 11px;
           font-weight: 500;
-          color: var(--endspace-accent-cyan, #78D2F0);
+          color: var(--p3-accent-cyan, #78D2F0);
           letter-spacing: 2px;
           text-transform: uppercase;
           opacity: 0.8;
@@ -298,7 +298,7 @@ export const LoadingCover = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: var(--endspace-accent-yellow, #00A0E9);
+          background: var(--p3-accent-yellow, #00A0E9);
           transform: scaleX(0);
           transform-origin: left;
           pointer-events: none;

@@ -201,7 +201,7 @@ export const EndspacePlayer = ({ isExpanded }) => {
             </>
           ) : (
             // Not playing: Show music icon
-            <div className="w-full h-full rounded-lg flex items-center justify-center bg-[var(--endspace-bg-secondary)] text-[var(--endspace-text-muted)] hover:text-gray-600 hover:bg-gray-200 transition-all">
+            <div className="w-full h-full rounded-lg flex items-center justify-center bg-[var(--p3-bg-secondary)] text-[var(--p3-text-muted)] hover:text-gray-600 hover:bg-gray-200 transition-all">
               <IconMusic size={18} stroke={1.5} />
             </div>
           )}
@@ -237,24 +237,24 @@ export const EndspacePlayer = ({ isExpanded }) => {
 
         {/* Track Info */}
         <div className="flex-1 min-w-0 flex flex-col justify-center">
-          <div className="text-sm font-bold text-[var(--endspace-text-primary)] truncate leading-tight">
+          <div className="text-sm font-bold text-[var(--p3-text-primary)] truncate leading-tight">
             {currentAudio.name || 'Unknown Track'}
           </div>
-          <div className="text-xs text-[var(--endspace-text-muted)] truncate mt-0.5">
+          <div className="text-xs text-[var(--p3-text-muted)] truncate mt-0.5">
             {currentAudio.artist || 'Unknown Artist'}
           </div>
           {/* Progress Bar */}
           <div className="mt-1.5 flex items-center gap-2">
             <div 
-              className="flex-1 h-1 bg-[var(--endspace-bg-tertiary)] rounded-full cursor-pointer overflow-hidden"
+              className="flex-1 h-1 bg-[var(--p3-bg-tertiary)] rounded-full cursor-pointer overflow-hidden"
               onClick={handleProgressClick}
             >
               <div 
-                className="h-full bg-[var(--endspace-accent-yellow)] transition-all duration-200"
+                className="h-full bg-[var(--p3-accent-yellow)] transition-all duration-200"
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <span className="text-[9px] font-mono text-[var(--endspace-text-muted)] w-8 text-right">
+            <span className="text-[9px] font-mono text-[var(--p3-text-muted)] w-8 text-right">
               {formatTime(currentTime)}
             </span>
           </div>
@@ -265,7 +265,7 @@ export const EndspacePlayer = ({ isExpanded }) => {
           {/* Playlist Toggle Button */}
           <button 
             onClick={(e) => { e.stopPropagation(); setShowPlaylist(!showPlaylist) }}
-            className={`w-6 h-6 flex items-center justify-center rounded transition-colors ${showPlaylist ? 'bg-black text-white' : 'text-[var(--endspace-text-muted)] hover:text-black'}`}
+            className={`w-6 h-6 flex items-center justify-center rounded transition-colors ${showPlaylist ? 'bg-black text-white' : 'text-[var(--p3-text-muted)] hover:text-black'}`}
             title="Playlist"
           >
             <IconList size={12} stroke={1.5} />
@@ -275,14 +275,14 @@ export const EndspacePlayer = ({ isExpanded }) => {
           <div className="flex items-center gap-0.5">
             <button 
               onClick={playPrev}
-              className="w-5 h-5 flex items-center justify-center text-[var(--endspace-text-muted)] hover:text-black transition-colors"
+              className="w-5 h-5 flex items-center justify-center text-[var(--p3-text-muted)] hover:text-black transition-colors"
               title="Previous"
             >
               <IconPlayerTrackPrev size={11} stroke={1.5} />
             </button>
             <button 
               onClick={playNext}
-              className="w-5 h-5 flex items-center justify-center text-[var(--endspace-text-muted)] hover:text-black transition-colors"
+              className="w-5 h-5 flex items-center justify-center text-[var(--p3-text-muted)] hover:text-black transition-colors"
               title="Next"
             >
               <IconPlayerTrackNext size={11} stroke={1.5} />
@@ -293,7 +293,7 @@ export const EndspacePlayer = ({ isExpanded }) => {
 
       {/* Playlist Dropdown */}
       {showPlaylist && (
-        <div className="mt-2 max-h-36 overflow-y-auto bg-[var(--endspace-bg-secondary)] rounded">
+        <div className="mt-2 max-h-36 overflow-y-auto bg-[var(--p3-bg-secondary)] rounded">
           {audioList.map((audio, index) => (
             <div 
               key={index}
@@ -301,12 +301,12 @@ export const EndspacePlayer = ({ isExpanded }) => {
               className={`px-3 py-1.5 cursor-pointer transition-colors ${
                 index === currentTrack 
                   ? 'bg-black text-white' 
-                  : 'hover:bg-[var(--endspace-bg-tertiary)]'
+                  : 'hover:bg-[var(--p3-bg-tertiary)]'
               }`}
             >
               {/* Song name line */}
               <div className={`text-xs truncate flex items-center gap-1.5 ${
-                index === currentTrack ? 'text-white font-medium' : 'text-[var(--endspace-text-secondary)]'
+                index === currentTrack ? 'text-white font-medium' : 'text-[var(--p3-text-secondary)]'
               }`}>
                 {index === currentTrack && isPlaying && (
                   <IconVolume size={11} stroke={1.5} className="flex-shrink-0" />
@@ -315,12 +315,12 @@ export const EndspacePlayer = ({ isExpanded }) => {
                   <IconPlayerPause size={11} stroke={1.5} className="flex-shrink-0" />
                 )}
                 {index !== currentTrack && (
-                  <span className="w-3 text-center font-mono text-[9px] text-[var(--endspace-text-muted)] flex-shrink-0">{index + 1}</span>
+                  <span className="w-3 text-center font-mono text-[9px] text-[var(--p3-text-muted)] flex-shrink-0">{index + 1}</span>
                 )}
                 <span className="truncate">{audio.name}</span>
               </div>
               {/* Artist name line (smaller) */}
-              <div className="text-[10px] text-[var(--endspace-text-muted)] truncate pl-4 mt-0.5">
+              <div className="text-[10px] text-[var(--p3-text-muted)] truncate pl-4 mt-0.5">
                 {audio.artist}
               </div>
             </div>

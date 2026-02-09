@@ -78,8 +78,8 @@ const useViewportScale = (options = {}) => {
     html.style.fontSize = `${fontSize}px`
     
     // Also set CSS custom properties for additional flexibility
-    html.style.setProperty('--endspace-viewport-scale', (fontSize / baseFontSize).toString())
-    html.style.setProperty('--endspace-base-font-size', `${fontSize}px`)
+    html.style.setProperty('--p3-viewport-scale', (fontSize / baseFontSize).toString())
+    html.style.setProperty('--p3-base-font-size', `${fontSize}px`)
   }, [landscapeBase, portraitBase, baseFontSize, minFontSize, maxFontSize])
 
   useEffect(() => {
@@ -107,8 +107,8 @@ const useViewportScale = (options = {}) => {
       window.removeEventListener('orientationchange', handleOrientationChange)
       // Reset font-size on unmount
       document.documentElement.style.fontSize = ''
-      document.documentElement.style.removeProperty('--endspace-viewport-scale')
-      document.documentElement.style.removeProperty('--endspace-base-font-size')
+      document.documentElement.style.removeProperty('--p3-viewport-scale')
+      document.documentElement.style.removeProperty('--p3-base-font-size')
     }
   }, [applyScale])
 

@@ -6,10 +6,10 @@ import CONFIG from '../config'
  */
 export const TitleBar = ({ post }) => {
 
-  const marqueeText = siteConfig('ENDSPACE_BANNER_WATERMARK_TEXT', 'SAILINGROOT_SPACE', CONFIG)
+  const marqueeText = siteConfig('P3_BANNER_WATERMARK_TEXT', 'SAILINGROOT_SPACE', CONFIG)
 
   return (
-    <div className="relative py-20 md:py-28 border-b-2 border-[var(--endspace-border-base)] overflow-hidden bg-[var(--endspace-bg-base)]">
+    <div className="relative py-20 md:py-28 border-b-2 border-[var(--p3-border-base)] overflow-hidden bg-[var(--p3-bg-base)]">
       {/* Post Cover Image Background - shown on article pages */}
       {post && post.pageCoverThumbnail && (
         <div className="absolute inset-0">
@@ -29,8 +29,8 @@ export const TitleBar = ({ post }) => {
           className="absolute inset-0"
           style={{
             backgroundImage: `
-              repeating-linear-gradient(0deg, transparent, transparent 2px, var(--endspace-text-muted) 2px, var(--endspace-text-muted) 4px),
-              repeating-linear-gradient(90deg, transparent, transparent 2px, var(--endspace-text-muted) 2px, var(--endspace-text-muted) 4px)
+              repeating-linear-gradient(0deg, transparent, transparent 2px, var(--p3-text-muted) 2px, var(--p3-text-muted) 4px),
+              repeating-linear-gradient(90deg, transparent, transparent 2px, var(--p3-text-muted) 2px, var(--p3-text-muted) 4px)
             `,
             backgroundSize: '100px 100px'
           }}
@@ -41,19 +41,19 @@ export const TitleBar = ({ post }) => {
       {!post && (
         <div className="absolute inset-0 flex items-center opacity-[0.15] pointer-events-none overflow-hidden">
           <div className="bg-watermark-scroll whitespace-nowrap leading-none">
-            <span className="text-[10rem] md:text-[14rem] font-black text-[var(--endspace-text-primary)] select-none">
+            <span className="text-[10rem] md:text-[14rem] font-black text-[var(--p3-text-primary)] select-none">
               {marqueeText}
-              <span className="mx-[5vw] text-[var(--endspace-text-muted)]">&#x2022;</span>
+              <span className="mx-[5vw] text-[var(--p3-text-muted)]">&#x2022;</span>
               {marqueeText}
-              <span className="mx-[5vw] text-[var(--endspace-text-muted)]">&#x2022;</span>
+              <span className="mx-[5vw] text-[var(--p3-text-muted)]">&#x2022;</span>
               {marqueeText}
-              <span className="mx-[5vw] text-[var(--endspace-text-muted)]">&#x2022;</span>
+              <span className="mx-[5vw] text-[var(--p3-text-muted)]">&#x2022;</span>
               {marqueeText}
-              <span className="mx-[5vw] text-[var(--endspace-text-muted)]">&#x2022;</span>
+              <span className="mx-[5vw] text-[var(--p3-text-muted)]">&#x2022;</span>
               {marqueeText}
-              <span className="mx-[5vw] text-[var(--endspace-text-muted)]">&#x2022;</span>
+              <span className="mx-[5vw] text-[var(--p3-text-muted)]">&#x2022;</span>
               {marqueeText}
-              <span className="mx-[5vw] text-[var(--endspace-text-muted)]">&#x2022;</span>
+              <span className="mx-[5vw] text-[var(--p3-text-muted)]">&#x2022;</span>
             </span>
           </div>
         </div>

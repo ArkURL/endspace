@@ -80,7 +80,7 @@ const FloatingControls = ({ toc, ...props }) => {
       title={label}
     >
       <div
-        className={`w-full h-full rounded-full flex items-center justify-center transition-colors duration-200 ${active ? 'bg-[var(--endspace-accent-yellow)]' : 'bg-transparent group-hover:bg-[var(--endspace-accent-yellow)]'
+        className={`w-full h-full rounded-full flex items-center justify-center transition-colors duration-200 ${active ? 'bg-[var(--p3-accent-yellow)]' : 'bg-transparent group-hover:bg-[var(--p3-accent-yellow)]'
           }`}
       >
         {showPercent ? (
@@ -107,7 +107,7 @@ const FloatingControls = ({ toc, ...props }) => {
       {/* The Drawer (Mobile Sheet / Desktop Popover) */}
       <div
         className={`
-            transition-all duration-300 ease-out bg-[#f7f9fe] border-[var(--endspace-border-base)] shadow-2xl overflow-hidden
+            transition-all duration-300 ease-out bg-[#f7f9fe] border-[var(--p3-border-base)] shadow-2xl overflow-hidden
             
             /* Mobile Styles: Bottom Sheet */
             fixed bottom-0 left-0 right-0 w-full rounded-t-2xl border-t z-40
@@ -157,7 +157,7 @@ const FloatingControls = ({ toc, ...props }) => {
                   <a
                     key={id}
                     href={`#${id}`}
-                    className={`block py-1 text-xs transition-colors rounded px-2 -mx-2 ${isActive ? 'text-black font-bold bg-[var(--endspace-accent-yellow)]/10' : 'text-gray-500 hover:text-black hover:bg-white'}`}
+                    className={`block py-1 text-xs transition-colors rounded px-2 -mx-2 ${isActive ? 'text-black font-bold bg-[var(--p3-accent-yellow)]/10' : 'text-gray-500 hover:text-black hover:bg-white'}`}
                     style={{ paddingLeft: `${(t.indentLevel || 0) * 12 + 8}px` }}
                     onClick={() => {
                       // Optional: Close on click for mobile?

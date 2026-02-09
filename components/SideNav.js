@@ -82,12 +82,12 @@ export const SideNav = (props) => {
   // All navigation items
   const menuItems = [
     { name: 'Home', path: '/' },
-    { name: 'Category', path: '/category', show: siteConfig('ENDSPACE_MENU_CATEGORY', null, CONFIG) },
-    { name: 'Tag', path: '/tag', show: siteConfig('ENDSPACE_MENU_TAG', null, CONFIG) },
-    { name: 'Archive', path: '/archive', show: siteConfig('ENDSPACE_MENU_ARCHIVE', null, CONFIG) },
+    { name: 'Category', path: '/category', show: siteConfig('P3_MENU_CATEGORY', null, CONFIG) },
+    { name: 'Tag', path: '/tag', show: siteConfig('P3_MENU_TAG', null, CONFIG) },
+    { name: 'Archive', path: '/archive', show: siteConfig('P3_MENU_ARCHIVE', null, CONFIG) },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Friends', path: '/friends' },
-    { name: 'Search', path: '/search', show: siteConfig('ENDSPACE_MENU_SEARCH', null, CONFIG) }
+    { name: 'Search', path: '/search', show: siteConfig('P3_MENU_SEARCH', null, CONFIG) }
   ].filter(item => item.show !== false)
 
   // Social icon config - using contact.config.js settings
@@ -186,7 +186,7 @@ export const SideNav = (props) => {
 
   return (
     <div 
-      className={`fixed left-0 top-0 bottom-0 z-40 hidden md:flex flex-col bg-[var(--endspace-bg-base)] border-r border-[var(--endspace-border-base)] transition-all duration-300 ease-in-out shadow-md ${isHovered ? 'w-[16rem]' : 'w-[5rem]'}`}
+      className={`fixed left-0 top-0 bottom-0 z-40 hidden md:flex flex-col bg-[var(--p3-bg-base)] border-r border-[var(--p3-border-base)] transition-all duration-300 ease-in-out shadow-md ${isHovered ? 'w-[16rem]' : 'w-[5rem]'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -204,12 +204,12 @@ export const SideNav = (props) => {
         </SmartLink>
         {/* Author Info - shown when expanded, fills the reserved space below avatar */}
         <div className={`mt-3 text-center transition-all duration-300 overflow-hidden ${isHovered ? 'opacity-100 max-h-20' : 'opacity-0 max-h-0'}`}>
-          <SmartLink href="/aboutme" className="hover:text-[var(--endspace-accent-yellow)] transition-colors">
-            <div className="text-sm font-bold text-[var(--endspace-text-primary)] uppercase tracking-wider">
+          <SmartLink href="/aboutme" className="hover:text-[var(--p3-accent-yellow)] transition-colors">
+            <div className="text-sm font-bold text-[var(--p3-text-primary)] uppercase tracking-wider">
               {siteConfig('AUTHOR') || ''}
             </div>
           </SmartLink>
-          <div className="text-xs text-[var(--endspace-text-muted)] mt-1 px-3 line-clamp-3 leading-relaxed">
+          <div className="text-xs text-[var(--p3-text-muted)] mt-1 px-3 line-clamp-3 leading-relaxed">
             {siteConfig('BIO') || ''}
           </div>
         </div>
@@ -220,7 +220,7 @@ export const SideNav = (props) => {
       <div ref={navRef} className="flex-1 py-4 flex flex-col gap-2 overflow-y-auto overflow-x-hidden relative">
         {/* Animated Active Indicator Bar - Higher z-index */}
         <div 
-          className="absolute left-0 w-1.5 h-[3rem] bg-[var(--endspace-text-primary)] transition-all duration-300 ease-out z-10"
+          className="absolute left-0 w-1.5 h-[3rem] bg-[var(--p3-text-primary)] transition-all duration-300 ease-out z-10"
           style={{ top: indicatorStyle.top, opacity: indicatorStyle.opacity }}
         />
         
@@ -311,8 +311,8 @@ export const SideNav = (props) => {
               <div 
                 className={`w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent transition-transform duration-300 ${
                   isHovered 
-                    ? 'border-r-[10px] border-r-[var(--endspace-text-primary)] border-l-0' 
-                    : 'border-l-[10px] border-l-[var(--endspace-text-primary)] border-r-0'
+                    ? 'border-r-[10px] border-r-[var(--p3-text-primary)] border-l-0' 
+                    : 'border-l-[10px] border-l-[var(--p3-text-primary)] border-r-0'
                 }`}
               />
             </div>
