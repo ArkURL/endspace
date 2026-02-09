@@ -78,7 +78,7 @@ const FloatingToc = ({ toc }) => {
   tocIds.current = ids
 
   return (
-    <div 
+    <div
       className="fixed z-50 hidden lg:block"
       style={{
         right: '1rem',
@@ -87,12 +87,11 @@ const FloatingToc = ({ toc }) => {
       }}
     >
       {/* Floating Container */}
-      <div 
-        className={`transition-all duration-300 ease-out ${
-          isExpanded 
-            ? 'w-64 bg-[#f7f9fe] border border-[var(--endspace-border-base)] shadow-lg rounded-xl' 
+      <div
+        className={`transition-all duration-300 ease-out ${isExpanded
+            ? 'w-64 bg-[#f7f9fe] border border-[var(--endspace-border-base)] shadow-lg rounded-xl'
             : 'w-10'
-        }`}
+          }`}
         style={{
           maxHeight: '70vh'
         }}
@@ -100,11 +99,10 @@ const FloatingToc = ({ toc }) => {
         {/* Toggle Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className={`flex items-center justify-center transition-all duration-300 shadow-md cursor-pointer border hover:-translate-y-1 hover:shadow-lg relative group rounded-full ${
-            isExpanded 
-              ? 'w-10 h-10 bg-[#FBFB46] text-black border-[#FBFB46] absolute -left-10 top-0' 
-              : 'w-10 h-10 bg-white text-gray-400 border-gray-200 hover:bg-[#FBFB46] hover:text-black hover:border-[#FBFB46]'
-          }`}
+          className={`flex items-center justify-center transition-all duration-300 shadow-md cursor-pointer border hover:-translate-y-1 hover:shadow-lg relative group rounded-full ${isExpanded
+              ? 'w-10 h-10 bg-[var(--endspace-accent-yellow)] text-black border-[var(--endspace-accent-yellow)] absolute -left-10 top-0'
+              : 'w-10 h-10 bg-white text-gray-400 border-gray-200 hover:bg-[var(--endspace-accent-yellow)] hover:text-black hover:border-[var(--endspace-accent-yellow)]'
+            }`}
           title={isExpanded ? 'Collapse TOC' : 'Expand TOC'}
         >
           {isExpanded ? (
@@ -123,7 +121,7 @@ const FloatingToc = ({ toc }) => {
                 <IconListTree size={16} stroke={2} className="mr-2" />
                 TABLE OF CONTENTS
               </h3>
-              <div className="w-16 h-1 bg-[#FBFB46] rounded-full overflow-hidden">
+              <div className="w-16 h-1 bg-[var(--endspace-accent-yellow)] rounded-full overflow-hidden">
                 <div
                   className="h-full bg-[var(--endspace-text-primary)] transition-all duration-300 ease-out"
                   style={{ width: `${progress}%` }}
@@ -132,7 +130,7 @@ const FloatingToc = ({ toc }) => {
             </div>
 
             {/* TOC Items */}
-            <div 
+            <div
               ref={tRef}
               className="overflow-y-auto overflow-x-hidden max-h-[50vh] scroll-smooth border-l border-[var(--endspace-border-base)] pl-4"
               style={{ scrollbarWidth: 'thin' }}
@@ -141,17 +139,16 @@ const FloatingToc = ({ toc }) => {
                 {toc.map((tocItem) => {
                   const id = uuidToId(tocItem.id)
                   const isActive = activeSection === id
-                  
+
                   return (
                     <a
                       key={id}
                       href={`#${id}`}
-                      className={`block py-1 text-xs transition-all duration-200 hover:translate-x-1 ${
-                        isActive 
-                          ? 'text-black font-bold' 
+                      className={`block py-1 text-xs transition-all duration-200 hover:translate-x-1 ${isActive
+                          ? 'text-black font-bold'
                           : 'text-[var(--endspace-text-secondary)] hover:text-[var(--endspace-text-primary)]'
-                      }`}
-                      style={{ 
+                        }`}
+                      style={{
                         paddingLeft: `${tocItem.indentLevel * 12}px`
                       }}
                     >

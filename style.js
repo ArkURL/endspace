@@ -1,38 +1,57 @@
 /**
  * Endspace Theme - Global Styles (JSX)
- * Light Industrial / Endfield-inspired aesthetic
+ * P3R (Persona 3 Reload) / Endfield-inspired aesthetic
  */
+import { siteConfig } from '@/lib/config'
+import CONFIG from './config'
 
 export const Style = () => {
+  // P3R 色板配置
+  const themeColor = siteConfig('ENDSPACE_THEME_COLOR', '#00A0E9', CONFIG)
+  const themeColorDim = siteConfig('ENDSPACE_THEME_COLOR_DIM', 'rgba(0, 160, 233, 0.15)', CONFIG)
+  const bgSurface = siteConfig('ENDSPACE_BG_SURFACE', '#050A1A', CONFIG)
+  const bgSurfaceElevated = siteConfig('ENDSPACE_BG_SURFACE_ELEVATED', '#0A1428', CONFIG)
+  const colorSecondary = siteConfig('ENDSPACE_COLOR_SECONDARY', '#003B71', CONFIG)
+  const colorSecondaryDim = siteConfig('ENDSPACE_COLOR_SECONDARY_DIM', 'rgba(0, 59, 113, 0.5)', CONFIG)
+  const colorAccent = siteConfig('ENDSPACE_COLOR_ACCENT', '#78D2F0', CONFIG)
+  const colorAccentDim = siteConfig('ENDSPACE_COLOR_ACCENT_DIM', 'rgba(120, 210, 240, 0.3)', CONFIG)
+  const btnBg = siteConfig('ENDSPACE_BTN_BG', 'rgba(0, 160, 233, 0.3)', CONFIG)
+  const glowShadow = siteConfig('ENDSPACE_GLOW_SHADOW', '0 0 8px rgba(0, 160, 233, 0.6), 0 0 16px rgba(0, 160, 233, 0.3)', CONFIG)
+
   return (
     <style jsx global>{`
       /* ============================================
-         CSS Custom Properties - Light Industrial Theme
+         CSS Custom Properties - P3R Theme
          ============================================ */
       :root {
-        /* Ethereal Whites & Grays */
+        /* Light Mode (保留作为备用) */
         --endspace-bg-base: #fafafa;
         --endspace-bg-primary: #ffffff;
         --endspace-bg-secondary: #f4f4f5;
         --endspace-bg-tertiary: #e4e4e7;
         
-        /* Dark Text (High Contrast) */
         --endspace-text-primary: #18181b;
         --endspace-text-secondary: #52525b;
         --endspace-text-muted: #a1a1aa;
         
-        /* Accents (Subtle Industrialism) -> Converted to Yellow Suite */
-        --endspace-accent-yellow: #FBFB45;
-        --endspace-accent-yellow-dim: rgba(251, 251, 69, 0.15);
-        --endspace-accent-cyan: #FBFB45; /* OVERRIDE: Cyan usage -> Yellow 500 */
-        --endspace-accent-cyan-dim: rgba(251, 251, 69, 0.1); /* OVERRIDE: Cyan dim -> Yellow dim */
+        /* P3R 主题色 */
+        --endspace-accent-yellow: ${themeColor};
+        --endspace-accent-yellow-dim: ${themeColorDim};
+        --endspace-accent-cyan: ${colorAccent};
+        --endspace-accent-cyan-dim: ${colorAccentDim};
+        --endspace-color-secondary: ${colorSecondary};
+        --endspace-color-secondary-dim: ${colorSecondaryDim};
         
         /* Borders & Lines */
         --endspace-border-base: #e4e4e7;
-        --endspace-border-active: #FBFB45; /* Active border -> Yellow */
+        --endspace-border-active: ${themeColor};
         --endspace-grid-color: rgba(0,0,0,0.03);
         
-        /* Shadows - Enhanced 3D Depth */
+        /* P3R 特效 */
+        --endspace-btn-glass-bg: ${btnBg};
+        --endspace-glow-shadow: ${glowShadow};
+        
+        /* Shadows */
         --endspace-shadow-base: 
           0 1px 2px rgba(0, 0, 0, 0.04),
           0 2px 4px rgba(0, 0, 0, 0.04),
@@ -44,35 +63,39 @@ export const Style = () => {
           0 0 0 1px var(--endspace-accent-yellow);
       }
 
-      /* Dark Mode Variables */
+      /* Dark Mode - P3R 深蓝风格 */
       .dark {
-        --endspace-bg-base: #09090b;
-        --endspace-bg-primary: #18181b;
-        --endspace-bg-secondary: #27272a;
-        --endspace-bg-tertiary: #3f3f46;
+        --endspace-bg-base: ${bgSurface};
+        --endspace-bg-primary: ${bgSurfaceElevated};
+        --endspace-bg-secondary: ${colorSecondary};
+        --endspace-bg-tertiary: ${colorSecondaryDim};
         
-        --endspace-text-primary: #fafafa;
-        --endspace-text-secondary: #a1a1aa;
-        --endspace-text-muted: #71717a;
+        --endspace-text-primary: #E8F4FC;
+        --endspace-text-secondary: ${colorAccent};
+        --endspace-text-muted: rgba(120, 210, 240, 0.6);
         
-        --endspace-accent-yellow: #FBFB45;
-        --endspace-accent-yellow-dim: rgba(251, 251, 69, 0.15);
-        --endspace-accent-cyan: #FBFB45; /* Dark Mode: Yellow 600 */
-        --endspace-accent-cyan-dim: rgba(251, 251, 69, 0.1);
+        --endspace-accent-yellow: ${themeColor};
+        --endspace-accent-yellow-dim: ${themeColorDim};
+        --endspace-accent-cyan: ${colorAccent};
+        --endspace-accent-cyan-dim: ${colorAccentDim};
+        --endspace-color-secondary: ${colorSecondary};
+        --endspace-color-secondary-dim: ${colorSecondaryDim};
         
-        --endspace-border-base: #27272a;
-        --endspace-border-active: #FBFB45;
-        --endspace-grid-color: rgba(255,255,255,0.02);
+        --endspace-border-base: ${colorSecondary};
+        --endspace-border-active: ${themeColor};
+        --endspace-grid-color: rgba(0, 160, 233, 0.05);
+        
+        --endspace-btn-glass-bg: ${btnBg};
+        --endspace-glow-shadow: ${glowShadow};
         
         --endspace-shadow-base: 
-          0 1px 2px rgba(0, 0, 0, 0.2),
-          0 2px 4px rgba(0, 0, 0, 0.15),
-          0 4px 8px rgba(0, 0, 0, 0.1);
+          0 1px 2px rgba(0, 0, 0, 0.4),
+          0 2px 4px rgba(0, 0, 0, 0.3),
+          0 4px 8px rgba(0, 0, 0, 0.2);
         --endspace-shadow-hover: 
-          0 4px 8px rgba(0, 0, 0, 0.3),
-          0 8px 16px rgba(0, 0, 0, 0.25),
-          0 16px 32px rgba(0, 0, 0, 0.2),
-          0 0 0 1px var(--endspace-accent-yellow);
+          ${glowShadow},
+          0 8px 16px rgba(0, 0, 0, 0.4),
+          0 16px 32px rgba(0, 0, 0, 0.3);
       }
 
       /* ============================================
@@ -134,6 +157,130 @@ export const Style = () => {
       .tech-num {
         font-family: 'Oswald', sans-serif;
         letter-spacing: 1px;
+      }
+
+      /* ============================================
+         P3R (Persona 3 Reload) 专属样式
+         ============================================ */
+      
+      /* P3R 毛玻璃按钮 - 30% 透明度背景 + backdrop-filter */
+      .p3r-btn {
+        background: var(--endspace-btn-glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--endspace-border-active);
+        box-shadow: var(--endspace-glow-shadow);
+        color: var(--endspace-text-primary);
+        padding: 0.75rem 1.5rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* 几何切割感 - 斜角 */
+        clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+      }
+      
+      .p3r-btn:hover {
+        background: rgba(0, 160, 233, 0.5);
+        box-shadow: 
+          0 0 12px rgba(0, 160, 233, 0.8),
+          0 0 24px rgba(0, 160, 233, 0.4),
+          0 0 48px rgba(0, 160, 233, 0.2);
+        transform: translateY(-2px);
+      }
+      
+      .p3r-btn:active {
+        transform: translateY(0);
+        box-shadow: var(--endspace-glow-shadow);
+      }
+      
+      /* P3R 卡片 - 发光边框 + 几何切割 */
+      .p3r-card {
+        background: var(--endspace-bg-primary);
+        border: 1px solid var(--endspace-border-active);
+        box-shadow: var(--endspace-glow-shadow);
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* 几何切割感 */
+        clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+      }
+      
+      .p3r-card:hover {
+        box-shadow: 
+          0 0 16px rgba(0, 160, 233, 0.7),
+          0 0 32px rgba(0, 160, 233, 0.4),
+          0 4px 16px rgba(0, 0, 0, 0.3);
+        transform: translateY(-4px);
+      }
+      
+      /* P3R 面板 - 毛玻璃效果 */
+      .p3r-panel {
+        background: var(--endspace-btn-glass-bg);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--endspace-color-secondary);
+        box-shadow: inset 0 1px 0 rgba(120, 210, 240, 0.1);
+      }
+      
+      /* P3R 发光文字 */
+      .p3r-glow-text {
+        color: var(--endspace-accent-cyan);
+        text-shadow: 
+          0 0 4px rgba(120, 210, 240, 0.6),
+          0 0 8px rgba(120, 210, 240, 0.4),
+          0 0 16px rgba(120, 210, 240, 0.2);
+      }
+      
+      /* P3R 扫描线动画 */
+      @keyframes p3r-scan {
+        0% { transform: translateY(-100%); opacity: 0; }
+        10% { opacity: 0.8; }
+        90% { opacity: 0.8; }
+        100% { transform: translateY(100vh); opacity: 0; }
+      }
+      
+      .p3r-scan-line {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, 
+          transparent, 
+          var(--endspace-accent-cyan) 20%, 
+          var(--endspace-border-active) 50%,
+          var(--endspace-accent-cyan) 80%, 
+          transparent
+        );
+        animation: p3r-scan 4s linear infinite;
+        pointer-events: none;
+      }
+      
+      /* P3R 几何装饰角 */
+      .p3r-corner::before,
+      .p3r-corner::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--endspace-border-active);
+        pointer-events: none;
+      }
+      
+      .p3r-corner::before {
+        top: -1px;
+        left: -1px;
+        border-right: none;
+        border-bottom: none;
+      }
+      
+      .p3r-corner::after {
+        bottom: -1px;
+        right: -1px;
+        border-left: none;
+        border-top: none;
       }
 
       /* ============================================
@@ -591,7 +738,7 @@ export const Style = () => {
       
       .ef-button:hover::before {
         height: 70%;
-        background-color: #FBFB45;
+        background-color: var(--endspace-accent-yellow);
       }
 
       /* ============================================
@@ -848,7 +995,7 @@ export const Style = () => {
         display: block;
         width: 4px;
         height: 18px;
-        background-color: #FBFB45; /* Yellow */
+        background-color: var(--endspace-accent-yellow); /* 主题色 */
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Rectangle */
       }
@@ -856,7 +1003,7 @@ export const Style = () => {
       .ef-btn:hover .ef-btn-indicator {
         width: 12px;
         height: 12px;
-        background-color: #FBFB45;
+        background-color: var(--endspace-accent-yellow);
         clip-path: polygon(0 0, 100% 50%, 0 100%); /* Triangle */
       }
       

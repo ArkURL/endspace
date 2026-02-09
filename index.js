@@ -105,8 +105,8 @@ const LayoutBase = (props) => {
             {/* Main content - Centered */}
             <div
               className={`${fullWidth
-                  ? 'w-full'
-                  : 'max-w-4xl w-full mx-auto'
+                ? 'w-full'
+                : 'max-w-4xl w-full mx-auto'
                 }`}
             >
               <Transition
@@ -264,7 +264,7 @@ const Layout404 = (props) => {
       <div className="endspace-card p-12 text-center tech-corner max-w-2xl mx-auto">
         <div className="mb-8">
           <div className="relative flex justify-center items-center mb-6">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#FBFB46] opacity-90 pointer-events-none" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[var(--endspace-accent-yellow)] opacity-90 pointer-events-none" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }} />
             <div className="relative text-8xl font-black text-black z-10">
               404
             </div>

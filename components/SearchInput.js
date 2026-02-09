@@ -44,7 +44,7 @@ export const SearchInput = ({ keyword = '', locale }) => {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             placeholder={locale?.SEARCH?.ARTICLES || 'Input query...'}
-            className="w-full px-4 py-3 bg-[var(--endspace-bg-secondary)] border border-[var(--endspace-border-base)] text-[var(--endspace-text-primary)] focus:bg-black focus:text-[#FBFB46] focus:border-[var(--endspace-accent-yellow)] focus:outline-none transition-colors pr-24 tech-text text-sm placeholder-[var(--endspace-text-muted)]"
+            className="w-full px-4 py-3 bg-[var(--endspace-bg-secondary)] border border-[var(--endspace-border-base)] text-[var(--endspace-text-primary)] focus:bg-black focus:text-[var(--endspace-accent-yellow)] focus:border-[var(--endspace-accent-yellow)] focus:outline-none transition-colors pr-24 tech-text text-sm placeholder-[var(--endspace-text-muted)]"
           />
 
           {/* Clear Button */}
@@ -61,7 +61,7 @@ export const SearchInput = ({ keyword = '', locale }) => {
           {/* Search Button (Enter) */}
           <button
             type="submit"
-            className="absolute right-1 top-1 bottom-1 px-3 bg-[var(--endspace-bg-tertiary)] text-black hover:bg-[#FBFB46] hover:text-black transition-colors font-bold text-xs border-l border-[var(--endspace-border-base)]"
+            className="absolute right-1 top-1 bottom-1 px-3 bg-[var(--endspace-bg-tertiary)] text-black hover:bg-[var(--endspace-accent-yellow)] hover:text-black transition-colors font-bold text-xs border-l border-[var(--endspace-border-base)]"
           >
             GO
           </button>
@@ -73,7 +73,7 @@ export const SearchInput = ({ keyword = '', locale }) => {
             SYSTEM_STATUS: <span className="text-green-500">ONLINE</span>
           </div>
           <div>
-             Index_v4.2.0
+            Index_v4.2.0
           </div>
         </div>
       </form>

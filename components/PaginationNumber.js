@@ -21,16 +21,16 @@ const PaginationNumber = ({ page, totalPage }) => {
     if (disabled) {
       return (
         <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center p-1 cursor-not-allowed opacity-50">
-           <div className="w-full h-full rounded-full flex items-center justify-center bg-transparent">
-             <Icon size={16} stroke={2} className="text-white/50" />
-           </div>
+          <div className="w-full h-full rounded-full flex items-center justify-center bg-transparent">
+            <Icon size={16} stroke={2} className="text-white/50" />
+          </div>
         </div>
       )
     }
     return (
       <SmartLink href={href} legacyBehavior passHref>
         <a className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-1 cursor-pointer group shadow-lg transition-transform active:scale-95" aria-label={label}>
-          <div className="w-full h-full rounded-full flex items-center justify-center bg-transparent group-hover:bg-[#FBFB46] transition-colors duration-200">
+          <div className="w-full h-full rounded-full flex items-center justify-center bg-transparent group-hover:bg-[var(--endspace-accent-yellow)] transition-colors duration-200">
             <Icon size={16} stroke={2} className="text-black" />
           </div>
         </a>
@@ -42,9 +42,9 @@ const PaginationNumber = ({ page, totalPage }) => {
     <div className="mt-12 py-6 flex flex-col items-center">
       {/* Dark Pill Container */}
       <div className="bg-[#2a2a2a] rounded-full p-1.5 flex items-center gap-3 shadow-2xl">
-        
+
         {/* First Page */}
-        <DoubleCircleBtn 
+        <DoubleCircleBtn
           href={{ pathname: `${pagePrefix}/`, query: router.query.s ? { s: router.query.s } : {} }}
           disabled={currentPage === 1}
           icon={IconChevronsLeft}
@@ -52,8 +52,8 @@ const PaginationNumber = ({ page, totalPage }) => {
         />
 
         {/* Prev Page */}
-        <DoubleCircleBtn 
-          href={{ 
+        <DoubleCircleBtn
+          href={{
             pathname: currentPage - 1 === 1 ? `${pagePrefix}/` : `${pagePrefix}/page/${currentPage - 1}`,
             query: router.query.s ? { s: router.query.s } : {}
           }}
@@ -68,7 +68,7 @@ const PaginationNumber = ({ page, totalPage }) => {
         </div>
 
         {/* Next Page */}
-        <DoubleCircleBtn 
+        <DoubleCircleBtn
           href={{ pathname: `${pagePrefix}/page/${currentPage + 1}`, query: router.query.s ? { s: router.query.s } : {} }}
           disabled={!showNext}
           icon={IconChevronRight}
@@ -76,7 +76,7 @@ const PaginationNumber = ({ page, totalPage }) => {
         />
 
         {/* Last Page */}
-        <DoubleCircleBtn 
+        <DoubleCircleBtn
           href={{ pathname: `${pagePrefix}/page/${totalPage}`, query: router.query.s ? { s: router.query.s } : {} }}
           disabled={currentPage === totalPage}
           icon={IconChevronsRight}

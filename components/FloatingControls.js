@@ -13,13 +13,13 @@ const FloatingControls = ({ toc, ...props }) => {
   const [activeTab, setActiveTab] = useState(null) // 'logs' | 'toc'
   const [percent, setPercent] = useState(0)
   const [activeSection, setActiveSection] = useState(null)
-  
+
   // -- TOC Logic --
   useEffect(() => {
     window.addEventListener('scroll', updateProgress)
     window.addEventListener('scroll', actionSectionScrollSpy)
     return () => {
-        window.removeEventListener('scroll', updateProgress)
+      window.removeEventListener('scroll', updateProgress)
       window.removeEventListener('scroll', actionSectionScrollSpy)
     }
   }, [])
@@ -79,20 +79,19 @@ const FloatingControls = ({ toc, ...props }) => {
       aria-label={label}
       title={label}
     >
-      <div 
-        className={`w-full h-full rounded-full flex items-center justify-center transition-colors duration-200 ${
-            active ? 'bg-[#FBFB46]' : 'bg-transparent group-hover:bg-[#FBFB46]'
-        }`}
+      <div
+        className={`w-full h-full rounded-full flex items-center justify-center transition-colors duration-200 ${active ? 'bg-[var(--endspace-accent-yellow)]' : 'bg-transparent group-hover:bg-[var(--endspace-accent-yellow)]'
+          }`}
       >
         {showPercent ? (
-            <div className="relative w-full h-full flex items-center justify-center">
-                <span className={`text-[10px] font-bold font-mono ${active ? 'text-black hidden' : 'text-gray-600 group-hover:hidden'}`}>
-                    {Math.round(percent)}%
-                </span>
-                <Icon size={iconSize} stroke={2} className={`${iconClassName} ${active ? 'block' : 'hidden group-hover:block'}`} />
-            </div>
+          <div className="relative w-full h-full flex items-center justify-center">
+            <span className={`text-[10px] font-bold font-mono ${active ? 'text-black hidden' : 'text-gray-600 group-hover:hidden'}`}>
+              {Math.round(percent)}%
+            </span>
+            <Icon size={iconSize} stroke={2} className={`${iconClassName} ${active ? 'block' : 'hidden group-hover:block'}`} />
+          </div>
         ) : (
-            <Icon size={iconSize} stroke={2} className={iconClassName} />
+          <Icon size={iconSize} stroke={2} className={iconClassName} />
         )}
       </div>
     </button>
@@ -104,7 +103,7 @@ const FloatingControls = ({ toc, ...props }) => {
       /* Note: Parent must allow fixed child to escape if needed, but fixed-in-fixed usually works for viewport. */
       /* We use a fragment or simple div to hold the buttons, and put the drawer as a sibling or just rely on fixed positioning. */
       /* Actually, to ensure proper z-indexing, let's keep them siblings. */}
-      
+
       {/* The Drawer (Mobile Sheet / Desktop Popover) */}
       <div
         className={`
@@ -120,110 +119,110 @@ const FloatingControls = ({ toc, ...props }) => {
             ${isOpen ? 'lg:translate-y-0 lg:opacity-100 lg:visible' : 'lg:translate-y-0 lg:translate-x-4 lg:opacity-0 lg:invisible'}
         `}
         style={{
-            /* Mobile Height Limit */
-            maxHeight: '70vh', 
+          /* Mobile Height Limit */
+          maxHeight: '70vh',
         }}
       >
-             {/* Header */}
-             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white shrinking-0">
-                <h3 className="font-bold text-sm uppercase flex items-center gap-2 text-black">
-                    {activeTab === 'toc' ? (
-                        <>
-                            <IconListTree size={16} className="text-black" />
-                            <span>Table of Contents</span>
-                        </>
-                    ) : (
-                        <>
-                             <IconClock size={16} className="text-black" />
-                             <span>Recent Logs</span>
-                        </>
-                    )}
-                </h3>
-                <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-black">
-                    <IconX size={18} />
-                </button>
-             </div>
+        {/* Header */}
+        <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white shrinking-0">
+          <h3 className="font-bold text-sm uppercase flex items-center gap-2 text-black">
+            {activeTab === 'toc' ? (
+              <>
+                <IconListTree size={16} className="text-black" />
+                <span>Table of Contents</span>
+              </>
+            ) : (
+              <>
+                <IconClock size={16} className="text-black" />
+                <span>Recent Logs</span>
+              </>
+            )}
+          </h3>
+          <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-black">
+            <IconX size={18} />
+          </button>
+        </div>
 
-             {/* Content Area */}
-             <div 
-                className="overflow-y-auto p-4 pb-24 lg:pb-4 flex-1" 
-                style={{ scrollbarWidth: 'thin' }}
-             >
-                {activeTab === 'toc' && (
-                    <nav className="space-y-1">
-                        {toc && toc.map(t => {
-                             const id = uuidToId(t.id)
-                             const isActive = activeSection === id
-                             return (
-                                <a
-                                  key={id}
-                                  href={`#${id}`}
-                                  className={`block py-1 text-xs transition-colors rounded px-2 -mx-2 ${isActive ? 'text-black font-bold bg-[#FBFB46]/10' : 'text-gray-500 hover:text-black hover:bg-white'}`}
-                                  style={{ paddingLeft: `${(t.indentLevel || 0) * 12 + 8}px` }}
-                                  onClick={() => {
-                                      // Optional: Close on click for mobile?
-                                      // setIsOpen(false) 
-                                  }}
-                                >
-                                    {t.text}
-                                </a>
-                             )
-                        })}
-                    </nav>
-                )}
-                {activeTab === 'logs' && (
-                    <SideBar {...props} showTitle={false} />
-                )}
-             </div>
+        {/* Content Area */}
+        <div
+          className="overflow-y-auto p-4 pb-24 lg:pb-4 flex-1"
+          style={{ scrollbarWidth: 'thin' }}
+        >
+          {activeTab === 'toc' && (
+            <nav className="space-y-1">
+              {toc && toc.map(t => {
+                const id = uuidToId(t.id)
+                const isActive = activeSection === id
+                return (
+                  <a
+                    key={id}
+                    href={`#${id}`}
+                    className={`block py-1 text-xs transition-colors rounded px-2 -mx-2 ${isActive ? 'text-black font-bold bg-[var(--endspace-accent-yellow)]/10' : 'text-gray-500 hover:text-black hover:bg-white'}`}
+                    style={{ paddingLeft: `${(t.indentLevel || 0) * 12 + 8}px` }}
+                    onClick={() => {
+                      // Optional: Close on click for mobile?
+                      // setIsOpen(false) 
+                    }}
+                  >
+                    {t.text}
+                  </a>
+                )
+              })}
+            </nav>
+          )}
+          {activeTab === 'logs' && (
+            <SideBar {...props} showTitle={false} />
+          )}
+        </div>
       </div>
 
       {/* The Controls (Buttons) */}
       <div className="fixed right-4 bottom-8 z-50 flex flex-col items-end gap-2 pointer-events-none">
         {/* Capsule */}
         <div className="bg-gray-400/80 backdrop-blur-sm p-1.5 rounded-full shadow-lg flex flex-row lg:flex-col gap-3 pointer-events-auto">
-             {/* LOGS */}
-             <ControlBtn 
-                icon={IconClock} 
-                label="Recent Logs" 
-                active={activeTab === 'logs'}
-                onClick={() => toggleDrawer('logs')}
-                iconClassName="text-black"
-                iconSize={24}
-             />
+          {/* LOGS */}
+          <ControlBtn
+            icon={IconClock}
+            label="Recent Logs"
+            active={activeTab === 'logs'}
+            onClick={() => toggleDrawer('logs')}
+            iconClassName="text-black"
+            iconSize={24}
+          />
 
-             {/* TOC - Only on Article Pages */}
-             {toc && toc.length > 0 && (
-                 <ControlBtn 
-                    icon={IconListTree} 
-                    label="Table of Contents" 
-                    active={activeTab === 'toc'}
-                    onClick={() => toggleDrawer('toc')}
-                    showPercent={true}
-                    iconClassName="text-gray-500"
-                    iconSize={28}
-                 />
-             )}
+          {/* TOC - Only on Article Pages */}
+          {toc && toc.length > 0 && (
+            <ControlBtn
+              icon={IconListTree}
+              label="Table of Contents"
+              active={activeTab === 'toc'}
+              onClick={() => toggleDrawer('toc')}
+              showPercent={true}
+              iconClassName="text-gray-500"
+              iconSize={28}
+            />
+          )}
 
-             {/* Comments - Only on Article Pages (approximated by TOC presence) */}
-             {toc && toc.length > 0 && (
-                 <ControlBtn 
-                    icon={IconMessage} 
-                    label="Jump to Comments" 
-                    onClick={() => {
-                        const comments = document.getElementById('comments')
-                        if (comments) {
-                            comments.scrollIntoView({ behavior: 'smooth' })
-                        }
-                    }}
-                 />
-             )}
+          {/* Comments - Only on Article Pages (approximated by TOC presence) */}
+          {toc && toc.length > 0 && (
+            <ControlBtn
+              icon={IconMessage}
+              label="Jump to Comments"
+              onClick={() => {
+                const comments = document.getElementById('comments')
+                if (comments) {
+                  comments.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
+            />
+          )}
 
-             {/* Scroll To Top */}
-             <ControlBtn 
-                icon={IconArrowUp} 
-                label="Scroll To Top" 
-                onClick={handleScrollToTop}
-             />
+          {/* Scroll To Top */}
+          <ControlBtn
+            icon={IconArrowUp}
+            label="Scroll To Top"
+            onClick={handleScrollToTop}
+          />
         </div>
       </div>
     </>
