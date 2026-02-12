@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { useGlobal } from '@/lib/global'
 import throttle from 'lodash.throttle'
 import { uuidToId } from 'notion-utils'
-import { IconHistory, IconClock, IconListTree, IconArrowUp, IconX, IconChevronRight, IconMessage } from '@tabler/icons-react'
+import { IconHistory, IconClock, IconListTree, IconArrowUp, IconX, IconChevronRight, IconMessage, IconMoon, IconSun } from '@tabler/icons-react'
 import { SideBar } from './SideBar'
 
 /**
@@ -13,6 +14,7 @@ const FloatingControls = ({ toc, ...props }) => {
   const [activeTab, setActiveTab] = useState(null) // 'logs' | 'toc'
   const [percent, setPercent] = useState(0)
   const [activeSection, setActiveSection] = useState(null)
+  const { isDarkMode, toggleDarkMode } = useGlobal()
 
   // -- TOC Logic --
   useEffect(() => {
@@ -216,6 +218,13 @@ const FloatingControls = ({ toc, ...props }) => {
               }}
             />
           )}
+
+          {/* Dark Mode Toggle */}
+          <ControlBtn
+            icon={isDarkMode ? IconSun : IconMoon}
+            label={isDarkMode ? 'Light Mode' : 'Dark Mode'}
+            onClick={toggleDarkMode}
+          />
 
           {/* Scroll To Top */}
           <ControlBtn
