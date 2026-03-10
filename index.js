@@ -25,6 +25,7 @@ import TitleBar from './components/TitleBar'
 import LoadingCover from './components/LoadingCover'
 import MobileNav from './components/MobileNav'
 import ArticleAdjacent from './components/ArticleAdjacent'
+import ArticleCopyright from './components/ArticleCopyright'
 import FloatingControls from './components/FloatingControls'
 import useViewportScale from './components/useViewportScale'
 import CONFIG from './config'
@@ -216,6 +217,11 @@ const LayoutSlug = (props) => {
               <div className="relative z-10">
                 <NotionPage post={post} />
               </div>
+
+              {/* Article Copyright (CC BY-NC-SA) - 仅在文章(Post)展示，不在独立页面(Page)展示 */}
+              {post?.type === 'Post' && (
+                <ArticleCopyright post={post} />
+              )}
 
               {/* Footer of the card - Share Bar */}
               {siteConfig('POST_SHARE_BAR_ENABLE') === 'true' && (
